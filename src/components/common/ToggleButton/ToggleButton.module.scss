@@ -1,0 +1,70 @@
+@import '../../../styles/global.scss';
+
+[class*="container"] {
+  border-radius: .25em;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in .5s color, ease-in .5s border-color;
+  margin: 0 auto;
+
+  [class*="lang"], [class*="mode"]  {
+    @include noSelect;
+    width: clamp(50px, calc(50px + 1vw), 70px);
+    height: clamp(30px, calc(30px + 1vw), 40px);
+    font-size: clamp(13px, (13px + 1vw), 20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      @include concavedDiv($toggle-div-inset-shadow, $toggle-div-shadow);
+      text-shadow: $toggle-text-shadow, $toggle-text-inset-shadow;
+    }
+
+    i {
+      pointer-events: none;
+    }
+  }
+
+  [id='tcOption1'] {
+    color: $toggle-light-font-color;
+  }
+
+  [id='tcOption2'] {
+    color: $toggle-dark-font-color;
+  }
+}
+
+.container-light {
+  border: 3px solid $toggle-light-font-color;
+  @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
+  text-shadow: 0px 1px 0px $toggle-active-text-shadow, 0px -1px 0px $toggle-actve-inset-text-shadow;
+
+  .lang, .mode{
+    @include concavedDiv($toggle-concaved-inset-shadow, $toggle-concaved-shadow);
+  }
+
+  .langActive, .modeActive {
+    @include concavedDiv($toggle-concaved-shadow, $toggle-concaved-inset-shadow);
+  }
+}
+
+.container-dark {
+  border: 3px solid $toggle-dark-font-color;
+  @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
+
+  .lang, .mode{
+    @include concavedDiv($toggle-concaved-inset-shadow, $toggle-concaved-shadow);
+  }
+
+  .langActive, .modeActive {
+    @include concavedDiv($toggle-concaved-shadow, $toggle-concaved-inset-shadow);
+    text-shadow: 0px 1px 0px $toggle-active-text-shadow, 0px -1px 0px $toggle-actve-inset-text-shadow;
+  }
+}

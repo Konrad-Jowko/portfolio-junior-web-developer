@@ -1,0 +1,84 @@
+@import '../../../styles/global.scss';
+
+[class*="homepageContainer-"] {
+  position: absolute;
+  min-height: 100%;
+  min-width: 100%;
+  transition: ease-in all .5s;
+  padding: 10px;
+
+  .homepageButtons {
+    width: 120px;
+    margin: 0 0 0 auto;
+  }
+
+  .homepageBox {
+    padding: 70px;
+    position: relative;
+    height: 1500px;
+    top: 120px;
+    display: flex;
+    flex-flow: column nowrap;
+
+    .homepageTitle {
+      line-height: 1.2;
+      font-size: 70px;
+      font-weight: bold;
+      transition: ease-in all .5s;
+    }
+
+    .homepageSubtitle {
+      font-size: 26px;
+      transition: ease-in all .5s;
+
+      .highlight {
+        display: inline-block;
+        font-size: 40px;
+        margin: 15px 50px;
+      }
+    }
+    .toPortfolio {
+      margin: 100px 0 0 auto;
+      font-size: 40px;
+      transition: ease-in all .5s;
+    }
+  }
+}
+
+.homepageContainer-light {
+  background: $light-background-color;
+
+  .homepageTitle {
+    @include concavedTextLight($font-serif-slab, $logo-font-light-color);
+    text-shadow: $light-selected-text-shadow;
+  }
+
+  .homepageSubtitle, .toPortfolio {
+    @include concavedTextLight($font-serif-slab, $logo-font-light-color);
+    text-shadow: $light-selected-text-shadow;
+
+    .highlight {
+      color: $logo-font-dark-color;
+      text-shadow: $logo-dark-selected-text-shadow;
+    }
+  }
+}
+
+.homepageContainer-dark {
+  background: $dark-background-color;
+
+  .homepageTitle {
+    @include concavedTextDark($font-serif-slab, $logo-font-dark-color);
+    text-shadow: $logo-dark-selected-text-shadow;
+  }
+
+  .homepageSubtitle, .toPortfolio {
+    @include concavedTextDark($font-serif-slab, $logo-font-dark-color);
+    text-shadow: $logo-dark-selected-text-shadow;
+
+    .highlight {
+      color: $logo-font-light-color;
+      text-shadow: $light-selected-text-shadow;
+    }
+  }
+}

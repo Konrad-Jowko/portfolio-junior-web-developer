@@ -1,0 +1,54 @@
+@import '../../../styles/global.scss';
+
+[class*="option"] {
+  min-width: clamp(115px, calc(115px + 4vw), 250px);
+  margin: .5em .3em;
+  padding: .5em;
+  letter-spacing: 1px;
+  font-size: $button-font-size;
+  font-weight: bold;
+  list-style-type: none;
+  text-decoration: none;
+  @include noSelect;
+  transition: ease-in .5s color, ease-in .5s border-color;
+
+  li {
+    pointer-events: none;
+  }
+}
+
+.option-light, .option-light-selected {
+  border: 3px solid $button-light-font-color;
+  border-radius: .25em;
+  @include concavedTextLight($button-font-family, $button-light-font-color);
+  @include concavedDiv($button-light-inset-shadow, $button-light-shadow);
+
+  &:hover {
+    @include concavedDiv($button-light-inset-shadow-selected, $button-light-shadow-selected);
+  }
+}
+
+.option-light-selected {
+  @include concavedDiv($button-light-inset-shadow-selected, $button-light-shadow-selected);
+  text-shadow: $button-light-selected-text-shadow;
+  color: $button-light-blend-color;
+  border-color: $button-light-blend-color;
+}
+
+.option-dark, .option-dark-selected {
+  border: 3px solid $button-dark-font-color;
+  border-radius: .25em;
+  @include concavedTextDark($button-font-family, $button-dark-font-color);
+  @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+
+  &:hover {
+    @include concavedDiv($button-dark-inset-shadow-selected, $button-dark-shadow-selected);
+  }
+}
+
+.option-dark-selected {
+  @include concavedDiv($button-dark-inset-shadow-selected, $button-dark-shadow-selected);
+  text-shadow: $button-dark-selected-text-shadow;
+  color: $button-dark-blend-color;
+  border-color: $button-dark-blend-color;
+}

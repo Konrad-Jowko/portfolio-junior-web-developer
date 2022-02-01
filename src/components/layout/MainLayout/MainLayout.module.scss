@@ -1,0 +1,28 @@
+@import '../../../styles/global.scss';
+
+html {
+  scrollbar-width: none;
+  min-height: 100vh;
+  @include noSelect;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+[class*='layoutContainer'] {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  transition: ease-in .5s background;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.layoutContainer-light {
+  background: $background-light;
+}
+
+.layoutContainer-dark {
+  background: $background-dark;
+}

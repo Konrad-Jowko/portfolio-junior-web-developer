@@ -1,0 +1,48 @@
+@import '../../../styles/global.scss';
+
+/* SETTINGS FOR ALL MODES */
+[class*='selectedLogo-'], [class*='logoContainer-'] {
+  font-size: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  min-width: 300px;
+  @include concavedTextLight($logo-font-family, $logo-font-light-color);
+  @include noSelect;
+  transition: ease-in .5s color;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+/* LIGHT MODE */
+
+.selectedLogo-light, .logoContainer-light {
+    @include concavedTextLight($logo-font-family, $logo-font-light-color);
+}
+
+.selectedLogo-light {
+  text-shadow: $light-selected-text-shadow;
+
+  &:hover {
+    text-shadow: $light-selected-text-shadow;
+  }
+}
+
+/* DARK MODE */
+
+.selectedLogo-dark, .logoContainer-dark {
+    @include concavedTextDark($logo-font-family, $logo-font-dark-color);
+}
+
+.selectedLogo-dark {
+  text-shadow: $logo-dark-selected-text-shadow;
+
+  &:hover {
+    text-shadow: $logo-dark-selected-text-shadow;
+  }
+}

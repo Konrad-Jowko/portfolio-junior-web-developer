@@ -1,0 +1,34 @@
+@import '../../../styles/global.scss';
+
+[class*="aboutContainer-"] {
+
+  .toAbout {
+    margin: 100px auto;
+    font-size: 40px;
+    transition: ease-in all .5s;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    i {
+      font-size: 70px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.aboutContainer-light {
+  .toAbout {
+    @include concavedTextLight($font-serif-slab, $logo-font-light-color);
+    text-shadow: $light-selected-text-shadow;
+    @include charsAnimation (lightIcon, $loading-font-light-color, $loading-light-blend-color, 1);
+  }
+}
+
+.aboutContainer-dark {
+  .toAbout {
+    @include concavedTextDark($font-serif-slab, $logo-font-dark-color);
+    text-shadow: $logo-dark-selected-text-shadow;
+    @include charsAnimation (darkIcon, $loading-font-dark-color, $loading-dark-blend-color, 1);
+  }
+}

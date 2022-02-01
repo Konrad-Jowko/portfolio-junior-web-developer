@@ -1,0 +1,46 @@
+@import '../../../styles/global.scss';
+
+[class*="loadingContainer-"] {
+  position: absolute;
+  flex: 1;
+  top: clamp(180px, calc(540px - 20vw), 540px);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in .5s all;
+  @include noSelect;
+
+
+  [class*="loadingBox-"] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    font-size: $loading-font-size;
+    font-family: $loading-font-family;
+    font-weight: bold;
+    transition: ease-in .5s all;
+  }
+}
+
+.loadingContainer-light {
+  background: $loading-light-background;
+
+  .loadingBox-light {
+    color: $loading-light-blend-color;
+    @include charsAnimation (light, $loading-font-light-color, $loading-light-blend-color, 12);
+  }
+}
+
+.loadingContainer-dark {
+  background: $loading-dark-background;
+
+  .loadingBox-dark {
+    color: $loading-dark-blend-color;
+    @include charsAnimation (dark, $loading-font-dark-color, $loading-dark-blend-color, 12);
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "26613a2e6bc41593c54bead46f8c8ee3",
+      "css": "portfolio",
+      "code": 61897,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "b392c847bf41826598f12c02be842253",
+      "css": "star",
+      "code": 59395,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "ef74ff62feda486fd414410e782b598a",
+      "css": "education",
+      "code": 59396,
+      "src": "entypo"
+    },
+    {
+      "uid": "48050e07077b01021f7fbdbbec8f7de7",
+      "css": "sun",
+      "code": 59392,
+      "src": "iconic"
+    },
+    {
+      "uid": "c2152732d525871cf35345955854f711",
+      "css": "moon",
+      "code": 59398,
+      "src": "iconic"
+    },
+    {
+      "uid": "1d9b2bb0d0621cd616139c6a441ed442",
+      "css": "down",
+      "code": 59393,
+      "src": "typicons"
+    }
+  ]
+}

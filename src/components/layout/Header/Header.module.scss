@@ -1,0 +1,50 @@
+@import '../../../styles/global.scss';
+
+[class*='headerContainer-'] {
+  position: relative;
+  max-width: 100%;
+  text-align: center;
+  min-height: $header-height;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+
+
+  &::before {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 7px;
+    transition: ease-in .5s background;
+  }
+
+  ul {
+    margin: 0 20px;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .buttonsContainer {
+    margin: 1.5em;
+    display: flex;
+    flex-flow: column wrap;
+    padding: .5em;
+  }
+}
+
+.headerContainer-light::before {
+  background: $header-light-decor-color;
+  @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+}
+
+.headerContainer-dark::before {
+  background: $header-dark-decor-color;
+  @include concavedDiv($dark-shadow-color, $dark-inset-shadow-color);
+}

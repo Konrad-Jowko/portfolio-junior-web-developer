@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Oswald:wght@400;700&family=Roboto+Slab:wght@400;500;700&display=swap');
+
+/* GLOBAL SETTINGS */
+
+// Colors
+$light-background-color: #F9D4C9;
+$light-inset-shadow-color: rgba(0,0,0,.1);
+$light-shadow-color: rgba(255,255,255,.4);
+$light-inset-shadow-color-selected: rgba(0,0,0,.3);
+$light-shadow-color-selected: rgba(255,255,255,.6);
+$pastel-pink-color: #F6C1B2;
+
+$dark-background-color: #180124 ;
+$dark-inset-shadow-color: rgba(0,0,0,.2);
+$dark-shadow-color: rgba(155,155,155,.2);
+$dark-inset-shadow-color-selected: rgba(0,0,0,.3);
+$dark-shadow-color-selected: rgba(155,155,155,.6);
+$pastel-violet-color: #310349 ;
+
+// Fonts & Font sizes
+$font-serif-inset: 'Arvo', serif;
+$font-no-serif-inset: 'Oswald', sans-serif;
+$font-serif-slab: 'Roboto Slab', serif;
+
+// Misc
+$light-selected-text-shadow: 0px 1px 0px rgba(255,255,255,.6), 0px -1px 0px rgba(0,0,0,.5);
+$dark-selected-text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(155,155,155,.2);
+
+
+/* COMMON COMPONENTS SETTINGS */
+
+// LoadingScreen
+$loading-font-size: clamp(50px, calc(50px + 1.5vw), 80px);
+$loading-font-family: $font-no-serif-inset;
+
+$loading-light-background: $light-background-color;
+$loading-font-light-color: $pastel-pink-color;
+$loading-light-blend-color: $light-background-color;
+
+$loading-dark-background: $dark-background-color;
+$loading-font-dark-color: $pastel-violet-color;
+$loading-dark-blend-color: $dark-background-color;
+
+// Button
+$button-font-family: $font-no-serif-inset;
+$button-font-size: clamp(14px, calc(14px + .5vw), 30px);
+
+$button-light-font-color: $pastel-pink-color;
+$button-light-inset-shadow: $light-inset-shadow-color;
+$button-light-inset-shadow-selected: $light-inset-shadow-color-selected;
+$button-light-shadow: $light-shadow-color;
+$button-light-shadow-selected: $light-shadow-color-selected;
+$button-light-blend-color: $light-background-color;
+$button-light-selected-text-shadow: $light-selected-text-shadow;
+
+$button-dark-font-color: $pastel-violet-color;
+$button-dark-inset-shadow: $dark-inset-shadow-color;
+$button-dark-inset-shadow-selected: $dark-inset-shadow-color-selected;
+$button-dark-shadow: $dark-shadow-color;
+$button-dark-shadow-selected: $dark-shadow-color-selected;
+$button-dark-blend-color: $dark-background-color;
+$button-dark-selected-text-shadow: $dark-selected-text-shadow;
+
+// ToggleButton
+$toggle-font-family: $font-no-serif-inset;
+$toggle-div-inset-shadow: rgba(0,0,0,.5);
+$toggle-div-shadow: rgba(255,255,255,.5);
+$toggle-text-shadow: 0px 1px 0px rgba(255,255,255,.9);
+$toggle-text-inset-shadow: 0px -1px 0px rgba(0,0,0,.9);
+$toggle-concaved-inset-shadow: rgba(255,255,255,.3);
+$toggle-concaved-shadow: rgba(0,0,0,.3);
+$toggle-active-text-shadow: rgba(255,255,255,.4);
+$toggle-actve-inset-text-shadow: rgba(0,0,0,.4);
+
+$toggle-light-font-color: $pastel-pink-color;
+$toggle-dark-font-color: $pastel-violet-color;
+
+/* FEATURES SETTINGS */
+
+// Logo
+$logo-font-family: $font-serif-inset;
+
+$logo-font-light-color: $pastel-pink-color;
+$logo-light-selected-text-shadow: $light-selected-text-shadow;
+
+$logo-font-dark-color: $pastel-violet-color;
+$logo-dark-selected-text-shadow: $dark-selected-text-shadow;
+
+/* LAYOUT COMPONENTS SETTINGS */
+
+// MainLayout
+$background-light: $light-background-color;
+$background-dark: $dark-background-color;
+
+// Header
+$header-height: clamp(80px, calc(80px + 1vw), 100px);
+
+$header-light-inset-shadow: $light-inset-shadow-color;
+$header-light-shadow: $light-shadow-color;
+$header-light-decor-color: $pastel-pink-color;
+
+$header-dark-inset-shadow: $dark-inset-shadow-color;
+$header-dark-shadow: dark-shadow-color;
+$header-dark-decor-color: $pastel-violet-color;
+
+/* VIEWS SETTINGS */
+
+
+
+
+/* GLOBAL MIXINS */
+
+@mixin concavedDiv ($insetColor, $shadowColor) {
+  -webkit-box-shadow: inset 1px 1px 5px $insetColor, 1px 1px 0px $shadowColor;
+  -moz-box-shadow: inset 1px 1px 5px $insetColor, 1px 1px 0px $shadowColor;
+  box-shadow: inset 1px 1px 5px $insetColor, 1px 1px 0px $shadowColor;
+}
+
+@mixin concavedTextLight ($font, $color) {
+  font-family: #{$font};
+  font-weight: bold;
+  color: #{$color};
+  text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.2);
+
+  &:hover {
+    text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+  }
+}
+
+@mixin concavedTextDark ($font, $color) {
+  font-family: #{$font};
+  font-weight: bold;
+  color: #{$color};
+  text-shadow: 0px 1px 0px rgba(255,255,255,.2), 0px -1px 0px rgba(155,155,155,.2);
+
+  &:hover {
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+  }
+}
+
+@mixin noSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// Mixins for loading screen floating letters
+
+@mixin charsAnimation ($name, $letterColor, $bgColor, $charsNumber ) {
+  @for $i from 0 through $charsNumber {
+    span:nth-child(#{$i}) {
+      @include floatingLetter (#{$name}, $letterColor, $bgColor, #{$i});
+    }
+  }
+}
+
+@mixin floatingLetter ($name, $letterColor, $bgColor, $delay) {
+  animation-name: #{$name};
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: calc(100ms * #{$delay});
+
+  @keyframes #{$name} {
+    0%   {text-shadow: 0px 1px 0px rgba(255,255,255, 0), 0px -1px 0px rgba(0,0,0,0); color: #{$bgColor};}
+    17%  {text-shadow: 0px 1px 0px rgba(255,255,255,.1), 0px -1px 0px rgba(0,0,0,.1)}
+    34%  {text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.3)}
+    51% {text-shadow: 0px 1px 0px rgba(255,255,255,.5), 0px -1px 0px rgba(0,0,0,.5); color: #{$letterColor};}
+    68% {text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.3)}
+    85% {text-shadow: 0px 1px 0px rgba(255,255,255,.2), 0px -1px 0px rgba(0,0,0,.2)}
+    100% {text-shadow: 0px 1px 0px rgba(255,255,255,0), 0px -1px 0px rgba(0,0,0,0); color: #{$bgColor};}
+  }
+}
