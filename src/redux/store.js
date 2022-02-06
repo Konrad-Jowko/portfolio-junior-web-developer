@@ -5,11 +5,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { initialState } from './initialState';
 import { reducer as globalReducer } from './globalRedux';
 import { reducer as headerReducer } from './headerRedux';
+import { reducer as portfolioReducer } from './portfolioRedux';
 
 /* DEFINE REDUCERS */
 const reducers = {
   global: globalReducer,
   header: headerReducer,
+  portfolio: portfolioReducer,
 };
 
 /* ADD BLANK REDUCERS FOR INITIAL STATE PROPERTIES WITHOUT REDUCERS */

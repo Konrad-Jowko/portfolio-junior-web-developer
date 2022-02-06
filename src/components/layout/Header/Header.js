@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import Logo from '../../features/Logo/LogoContainer';
 import Button from '../../common/Button/ButtonContainer';
 import ToggleButton from '../../common/ToggleButton/ToggleButtonContainer';

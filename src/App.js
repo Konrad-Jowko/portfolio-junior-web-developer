@@ -6,7 +6,7 @@ import { store } from './redux/store';
 
 import MainLayout from './components/layout/MainLayout/MainLayoutContainer';
 import Homepage from './components/views/Homepage/HomepageContainer';
-import Portfolio from './components/views/Portfolio/Portfolio';
+import Portfolio from './components/views/Portfolio/PortfolioContainer';
 import Experience from './components/views/Experience/Experience';
 import Education from './components/views/Education/Education';
 import Contact from './components/views/Contact/Contact';

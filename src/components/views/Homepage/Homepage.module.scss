@@ -1,46 +1,64 @@
 @import '../../../styles/global.scss';
 
 [class*="homepageContainer-"] {
+  z-index: 1;
   position: absolute;
   min-height: 100%;
-  min-width: 100%;
+  width: 100%;
   transition: ease-in all .5s;
   padding: 10px;
 
   .homepageButtons {
-    width: 120px;
+    max-width: 110px;
     margin: 0 0 0 auto;
+
+    * > * {
+      z-index: 10;
+    }
   }
 
   .homepageBox {
-    padding: 70px;
+    z-index: 1;
+    width: 100%;
+    // margin: clamp(0px, calc(0px + 5vw), 70px);
+    margin-top: clamp(50px, calc(50px + 5vw), 120px);
     position: relative;
-    height: 1500px;
-    top: 120px;
+    top: -120px;
     display: flex;
     flex-flow: column nowrap;
 
     .homepageTitle {
+      margin-top: clamp(50px, calc(50px + 5vw), 120px);
       line-height: 1.2;
-      font-size: 70px;
+      font-size: clamp(25px, calc(25px + 5vw), 70px);
       font-weight: bold;
       transition: ease-in all .5s;
+      display: flex;
+      flex-flow: row wrap;
     }
 
     .homepageSubtitle {
-      font-size: 26px;
+      max-width: 100%;
+      font-size: clamp(12px, calc(12px + 5vw), 36px);
       transition: ease-in all .5s;
 
-      .highlight {
+      .highlight, .toPortfolioLink {
         display: inline-block;
-        font-size: 40px;
-        margin: 15px 50px;
+        font-size: clamp(12px, calc(12px + 5vw), 42px);
+        margin-top: 15px;
+        margin-left: clamp(0px, calc(0px + 2vw), 50px);
       }
     }
     .toPortfolio {
-      margin: 100px 0 0 auto;
-      font-size: 40px;
+      padding: 50px 0 0 0;
+      margin: clamp(0px, calc(0px + 5vw), 110px) 0 0 auto;
+      font-size: clamp(12px, calc(12px + 5vw), 40px);
       transition: ease-in all .5s;
+      @include fade-in('box', 1);
+    }
+
+    [class*="hide"] {
+      opacity: 0;
     }
   }
 }
@@ -57,9 +75,14 @@
     @include concavedTextLight($font-serif-slab, $logo-font-light-color);
     text-shadow: $light-selected-text-shadow;
 
-    .highlight {
+    .highlight, .toPortfolioLink {
+      transition: all 0.5s ease-in;
       color: $logo-font-dark-color;
       text-shadow: $logo-dark-selected-text-shadow;
+    }
+
+    .toPortfolioLink:hover {
+      color: $loading-light-blend-color;
     }
   }
 }
@@ -76,9 +99,14 @@
     @include concavedTextDark($font-serif-slab, $logo-font-dark-color);
     text-shadow: $logo-dark-selected-text-shadow;
 
-    .highlight {
+    .highlight, .toPortfolioLink {
+      transition: all 0.5s ease-in;
       color: $logo-font-light-color;
       text-shadow: $light-selected-text-shadow;
+    }
+
+    .toPortfolioLink:hover {
+      color: $button-dark-blend-color;
     }
   }
 }

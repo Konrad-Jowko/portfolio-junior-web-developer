@@ -173,3 +173,15 @@ $header-dark-decor-color: $pastel-violet-color;
     100% {text-shadow: 0px 1px 0px rgba(255,255,255,0), 0px -1px 0px rgba(0,0,0,0); color: #{$bgColor};}
   }
 }
+
+@mixin fade-in ($name, $iteration) {
+  animation-name: #{$name};
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: #{$iteration};
+
+  @keyframes #{$name} {
+    0%   {text-shadow: 0px 1px 0px rgba(255,255,255, 0), 0px -1px 0px rgba(0,0,0,0); opacity: 0;}
+    100% {text-shadow: 0px 1px 0px rgba(255,255,255,.5), 0px -1px 0px rgba(0,0,0,.5)}
+  }
+}

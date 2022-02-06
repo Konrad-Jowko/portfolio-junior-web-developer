@@ -3,32 +3,272 @@
 [class*="aboutContainer-"] {
 
   .toAbout {
-    margin: 100px auto;
-    font-size: 40px;
+    margin: clamp(5px, calc(5px + 3vh), 50px) auto;
+    font-size: clamp(10px, calc(10px + 4vw), 40px);
     transition: ease-in all .5s;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    @include fade-in('box', 1);
+    width: 50%;
 
     i {
-      font-size: 70px;
-      margin-bottom: 15px;
+      font-size: clamp(40px, calc(40px + 4vw), 70px);
+    }
+  }
+
+  .aboutBox {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+
+    .aboutElement {
+      margin: clamp(0px, calc(0px + 10vw), 180px) clamp(15px, calc(15px + 5vw), 10px);
+      padding: clamp(0px, calc(0px + 1vw), 20px);
+      height: calc(max(500px, 50vh));
+
+      .elementTitle {
+        padding: clamp(0px, calc(0px + 4vw), 40px);
+        font-size: clamp(15px, calc(15px + 4vw), 70px);
+      }
+
+      .elementSubtitle {
+        text-align: justify;
+        max-width: calc(max(50%, 300px));
+        padding: clamp(10px, calc(10px + 1vw), 20px);
+        font-size: clamp(12px, calc(12px + 1vw), 30px);
+      }
+
+      .elementContent {
+        text-align: justify;
+        padding-top: clamp(15px, calc(15px + 10vw), 200px);
+        font-size: clamp(18px, calc(18px + 1vw), 45px);
+        max-width: calc(max(70%, 300px));
+        margin: 0 0 0 auto;
+      }
+    }
+
+    .aboutElement:nth-child(even) {
+      .elementTitle {
+        text-align: right;
+        margin: 0 0 0 auto;
+      }
+
+      .elementSubtitle {
+        margin: 0 0 0 auto;
+      }
+
+      .elementContent {
+        margin: 0 auto 0 0;
+      }
+    }
+
+    .redirect {
+      margin: clamp(-20px, calc(-20px + 10vw), 140px);
+      padding: clamp(-20px, calc(-20px + 10vw), 150px);
+      padding-top: clamp(100px, calc(100px + 10vw), 150px);
+      width: calc(max(75%, 300px));
+      font-size: clamp(15px, calc(15px + 1vw), 40px);
+      line-height: 2;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: flex-end;
+
+      .redirectButton {
+        margin: 20px;
+        text-align: right;
+        font-size: clamp(15px, calc(15px + 5vw), 50px);
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
 }
 
 .aboutContainer-light {
   .toAbout {
-    @include concavedTextLight($font-serif-slab, $logo-font-light-color);
-    text-shadow: $light-selected-text-shadow;
-    @include charsAnimation (lightIcon, $loading-font-light-color, $loading-light-blend-color, 1);
+    @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
+    text-shadow: none;
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
+      text-shadow: $light-selected-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      @include charsAnimation (lightIcon, $loading-font-light-color, $loading-light-blend-color, 1);
+      color: $toggle-light-font-color;
+    }
+  }
+
+  .elementTitle, .elementSubtitle {
+    @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
+      text-shadow: $light-selected-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      color: $toggle-light-font-color;
+    }
+  }
+
+  .elementContent {
+    @include concavedTextLight($toggle-font-family, $loading-light-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($toggle-font-family, $loading-light-blend-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.3);
+    }
+
+    &[class*="showWhole"] {
+      color: $toggle-light-font-color;
+    }
+  }
+
+  .elementSubtitle {
+    @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      opacity: .2;
+      @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
+      text-shadow: $light-selected-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      opacity: .2;
+      color: $toggle-dark-font-color;
+    }
+  }
+
+  .redirect, .redirectButton {
+    @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &:hover {
+      text-shadow: none;
+    }
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.3);
+    }
+
+    &[class*="showWhole"] {
+      @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
+
+      .redirectButton {
+        @include concavedTextLight($font-serif-slab, $button-dark-font-color);
+
+        &:hover {
+          color: $button-light-blend-color;
+        }
+      }
+    }
   }
 }
 
 .aboutContainer-dark {
   .toAbout {
-    @include concavedTextDark($font-serif-slab, $logo-font-dark-color);
-    text-shadow: $logo-dark-selected-text-shadow;
-    @include charsAnimation (darkIcon, $loading-font-dark-color, $loading-dark-blend-color, 1);
+    @include concavedTextDark($font-serif-slab, $loading-dark-blend-color);
+    text-shadow: none;
+
+    &[class*="showOutline"] {
+      @include concavedTextDark($font-serif-slab, $loading-dark-blend-color);
+      text-shadow: $dark-selected-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      @include charsAnimation (darkIcon, $loading-font-dark-color, $loading-dark-blend-color, 1);
+      color: $toggle-dark-font-color;
+    }
+  }
+
+  .elementTitle, .elementSubtitle {
+    @include concavedTextDark($font-serif-slab, $loading-dark-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      @include concavedTextDark($font-serif-slab, $loading-dark-blend-color);
+      text-shadow: $dark-selected-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      color: $toggle-dark-font-color;
+    }
+  }
+
+  .elementContent {
+    @include concavedTextLight($toggle-font-family, $loading-dark-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($toggle-font-family, $loading-dark-blend-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.3);
+    }
+
+    &[class*="showWhole"] {
+      color: $toggle-dark-font-color;
+    }
+  }
+
+  .elementSubtitle {
+    @include concavedTextLight($font-serif-slab, $loading-dark-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      opacity: .2;
+      @include concavedTextLight($font-serif-slab, $loading-dark-blend-color);
+      text-shadow: $dark-selected-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      opacity: .8;
+      color: $toggle-light-font-color;
+    }
+  }
+
+  .redirect, .redirectButton {
+    @include concavedTextLight($font-serif-slab, $loading-dark-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &:hover {
+      text-shadow: none;
+    }
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($font-serif-slab, $loading-dark-blend-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.3);
+    }
+
+    &[class*="showWhole"] {
+      @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
+
+      .redirectButton {
+        @include concavedTextLight($font-serif-slab, $button-light-font-color);
+
+        &:hover {
+          color: $button-dark-blend-color;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    @include concavedTextLight($logo-font-family, $button-dark-blend-color);
   }
 }

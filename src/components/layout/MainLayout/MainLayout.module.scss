@@ -2,7 +2,6 @@
 
 html {
   scrollbar-width: none;
-  min-height: 100vh;
   @include noSelect;
 }
 ::-webkit-scrollbar {

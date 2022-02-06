@@ -1,5 +1,65 @@
 @import '../../../styles/global.scss';
 
-.root {
+[class*="portfolioContainer-"] {
+  z-index: 1;
+  min-height: 100%;
+  width: 100%;
+  transition: ease-in all .5s;
+  padding: 25px;
+  padding-top: 50px;
+
+  .portfolioTitle {
+    text-align: center;
+    padding-bottom: 15px;
+    font-size: clamp(15px, calc(15px + 4vw), 70px);
+  }
+
+  .portfolioSubtitle1, .portfolioSubtitle2 {
+    text-align: left;
+    padding: 5px;
+    font-size: clamp(12px, calc(12px + 1vw), 30px);
+  }
+
+  .portfolioSubtitle2 {
+    text-align: right;
+  }
+
+  .portfolioBox {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    .projectContainer {
+      margin-top: 15vh;
+
+      .projectTitle {
+        font-size: clamp(24px, calc(24px + 1vw), 55px);
+
+      }
+    }
+
+  }
+}
+
+.portfolioContainer-light {
+  .portfolioTitle {
+    @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
+    text-shadow: $light-selected-text-shadow;
+  }
+
+  .portfolioSubtitle1, .portfolioSubtitle2 {
+    opacity: .2;
+    @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
+    text-shadow: $light-selected-text-shadow;
+  }
+
+  .projectTitle {
+    @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
+    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.3);
+  }
+}
+
+.portfolioContainer-dark{
 
 }
