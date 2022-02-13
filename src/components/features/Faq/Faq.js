@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-import styles from './About.module.scss';
+import styles from './Faq.module.scss';
 
-const About = ({mode, content}) => {
+const Faq = ({mode, content}) => {
   const setObservers = () => {
-    const toAbout = document.querySelector('[class*="toAbout"]');
+    const toFaq = document.querySelector('[class*="toFaq"]');
     const redirect = document.querySelector('[class*="redirect"]');
     const titles = document.querySelectorAll('[class*="elementTitle"]');
     const subtitles = document.querySelectorAll('[class*="elementSubtitle"]');
@@ -59,8 +59,8 @@ const About = ({mode, content}) => {
       fadeInObserver.observe(section);
     });
 
-    outlineObserver.observe(toAbout);
-    fadeInObserver.observe(toAbout);
+    outlineObserver.observe(toFaq);
+    fadeInObserver.observe(toFaq);
 
     outlineObserver.observe(redirect);
     fadeInObserver.observe(redirect);
@@ -74,9 +74,9 @@ const About = ({mode, content}) => {
 
   return (
     <div className={styles.[`aboutContainer-${mode}`]}>
-      <div className={styles.toAbout}>
+      <div className={styles.toFaq}>
         <span> <i className={'icon-down'} /> </span>
-        {content.toAboutContent}
+        {content.toFaqContent}
       </div>
       <div className={styles.aboutBox}>
         {content.aboutElements.map(element => (
@@ -102,10 +102,10 @@ const About = ({mode, content}) => {
     </div>
   );};
 
-About.propTypes = {
+Faq.propTypes = {
   mode: PropTypes.string,
   language: PropTypes.string,
   content: PropTypes.object,
 };
 
-export default About;
+export default Faq;

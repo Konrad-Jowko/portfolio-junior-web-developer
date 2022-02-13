@@ -4,6 +4,7 @@ import Axios from 'axios';
 export const getMode = ({global}) => global.mode;
 export const getLanguage = ({global}) => global.language;
 export const getLoading = ({global}) => global.loading;
+export const getData = (state) => state.contact;
 
 /* ACTION NAME CREATOR */
 const reducerName = 'global';

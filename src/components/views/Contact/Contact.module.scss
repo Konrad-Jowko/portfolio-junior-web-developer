@@ -1,5 +1,137 @@
 @import '../../../styles/global.scss';
 
-.root {
+[class*="contactContainer-"] {
+  z-index: 1;
+  min-height: 100%;
+  width: 100%;
+  transition: ease-in all .5s;
+  padding: clamp(5px, calc(5px + 1vw), 25px);
+  padding-top: 50px;
 
+  .contactTitle {
+    text-align: center;
+    padding-bottom: 15px;
+    font-size: clamp(15px, calc(15px + 4vw), 70px);
+  }
+
+  .contactSubtitle {
+    text-align: left;
+    padding: 5px;
+    font-size: clamp(12px, calc(12px + 1vw), 30px);
+  }
+
+  .contactBox {
+    transition: all .5s ease-in;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: clamp(5px, calc(5px + 1vw), 25px);
+
+    .sectionContainer {
+      text-align: center;
+      margin: 15px;
+      padding: 25px;
+      flex: 1;
+      min-height: 260px; //
+      min-width: 250px;
+
+      .sectionDescription {
+        text-align: justify;
+        font-size: 24px;
+        margin-bottom: 6vh;
+      }
+
+      .link, .copyable {
+        text-decoration: none;
+        transition: opacity .5s ease-in;
+
+        i {
+          font-size: calc(54px + 1vw);
+        }
+      }
+
+      .copyable {
+        font-size: clamp(10px, calc(10px + 1vw), 20px);
+        display: flex;
+        flex-flow: column nowrap;
+
+        & * {
+          pointer-events: none;
+        }
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.contactContainer-light {
+  .contactTitle {
+    @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
+    text-shadow: $light-selected-text-shadow;
+  }
+
+  .contactSubtitle {
+    opacity: .2;
+    @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
+    text-shadow: $light-selected-text-shadow;
+  }
+
+  .contactBox {
+    .sectionContainer {
+      @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+
+      .sectionDescription {
+        @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
+        text-shadow: $light-selected-text-shadow;
+      }
+
+      .link {
+        a {
+          @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
+        }
+      }
+
+      .copyable {
+        @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
+      }
+    }
+  }
+}
+
+.contactContainer-dark {
+  .contactTitle {
+    @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
+    text-shadow: $dark-selected-text-shadow;
+  }
+
+  .contactSubtitle {
+    opacity: .7;
+    @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
+    text-shadow: $light-selected-text-shadow;
+  }
+
+  .contactBox {
+    .sectionContainer {
+      @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+
+      .sectionDescription {
+        @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
+        text-shadow: $light-selected-text-shadow;
+      }
+
+      .link {
+        a {
+          @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
+        }
+      }
+
+      .copyable {
+        @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
+      }
+    }
+  }
 }

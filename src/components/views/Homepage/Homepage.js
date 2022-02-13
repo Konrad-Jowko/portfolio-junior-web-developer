@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import ToggleButton from '../../common/ToggleButton/ToggleButtonContainer';
-import About from '../../features/About/About';
+import Faq from '../../features/Faq/Faq';
 
 import styles from './Homepage.module.scss';
 
-const Homepage = ({mode, language, contentPL, contentENG}) => {
+const Homepage = ({mode, language, contentPL, contentENG, data}) => {
   let content;
+
+  console.log(JSON.stringify(data));
 
   if (language === 'eng') {
     content = contentENG;
@@ -63,7 +65,7 @@ const Homepage = ({mode, language, contentPL, contentENG}) => {
           <NavLink to={'/Portfolio'} className={styles.toPortfolioLink}> {content.toPortfolioLink}</NavLink>
           {content.toPortfolioContent}
         </div>
-        <About mode={mode} content={content.about} />
+        <Faq mode={mode} content={content.about} />
       </div>
     </div>
   );
@@ -74,6 +76,7 @@ Homepage.propTypes = {
   language: PropTypes.string,
   contentENG: PropTypes.object,
   contentPL: PropTypes.object,
+  data: PropTypes.object,
 };
 
 export default Homepage;

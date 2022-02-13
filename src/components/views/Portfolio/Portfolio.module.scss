@@ -5,8 +5,8 @@
   min-height: 100%;
   width: 100%;
   transition: ease-in all .5s;
-  padding: 25px;
-  padding-top: 50px;
+  padding: clamp(2px, calc(2px + 4vw), 25px);
+  padding-top: clamp(15px, calc(15px + 4vw), 50px);
 
   .portfolioTitle {
     text-align: center;
@@ -15,31 +15,96 @@
   }
 
   .portfolioSubtitle1, .portfolioSubtitle2 {
-    text-align: left;
+    text-align: right;
     padding: 5px;
     font-size: clamp(12px, calc(12px + 1vw), 30px);
   }
 
   .portfolioSubtitle2 {
-    text-align: right;
+    text-align: left;
   }
 
   .portfolioBox {
+    transition: all .5s ease-in;
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
 
     .projectContainer {
-      margin-top: 15vh;
+      width: 100%;
+      text-align: center;
+      padding: clamp(3px, calc(3px + 4vw), 15px);
+      margin-top: clamp(3vh, calc(3vh + 4vw),10vh);
 
       .projectTitle {
         font-size: clamp(24px, calc(24px + 1vw), 55px);
+        margin-bottom: 20px;
+      }
 
+      .projectDescription {
+        line-height: 1.5;
+        font-size: clamp(14px, calc(14px + 1vw), 28px);
+        text-align: justify;
+      }
+
+      .detailsContainer {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .detail {
+          flex: 1;
+          display: flex;
+          flex-flow: column nowrap;
+          min-height: calc(min(280px, 25vh));
+          margin: 30px;
+
+          .detailTitle {
+            font-size: clamp(12px, calc(12px + 4vw), 34px);
+            margin-bottom: 20px;
+          }
+
+          .detailContent, .detailLink {
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            padding-top: clamp(0px, calc(0px + 2vw), 35px);
+            padding-right: clamp(0px, calc(0px + 2vw), 35px);
+            padding-bottom: 0px;
+            padding-left: clamp(0px, calc(0px + 2vw), 35px);
+            font-size: clamp(12px, calc(12px + 1vw), 25px);
+            text-align: justify;
+            text-decoration: none;
+
+            a {
+              text-align: center;
+              width: 25%;
+              display: block;
+              font-size: clamp(12px, calc(12px + 4vw), 34px);
+            }
+          }
+
+          .warning {
+            padding-top: 15px;
+            display: block;
+            font-size: clamp(10px, calc(10px + 4vw), 20px);
+          }
+        }
       }
     }
-
   }
+}
+
+[class*="hide"] {
+  opacity: 0;
+  transition: all .5s ease-in;
+}
+
+[class*="show"] {
+  opacity: 1;
+  transition: all .5s ease-in;
 }
 
 .portfolioContainer-light {
@@ -54,12 +119,82 @@
     text-shadow: $light-selected-text-shadow;
   }
 
-  .projectTitle {
-    @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.3);
+  .projectContainer {
+    @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+
+    .projectTitle {
+      @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+    }
+
+    .projectDescription {
+      @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+    }
+
+    .detailTitle {
+      @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+    }
+
+    .detailContent, .detailLink {
+      @include concavedTextLight($toggle-font-family, $toggle-dark-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+
+      a {
+        color: $toggle-dark-font-color;
+      }
+    }
+
+    .warning {
+      @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+    }
   }
 }
 
 .portfolioContainer-dark{
+  .portfolioTitle {
+    @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
+    text-shadow: $dark-selected-text-shadow;
+  }
 
+  .portfolioSubtitle1, .portfolioSubtitle2 {
+    opacity: .8;
+    @include concavedTextDark($font-serif-slab, $toggle-light-font-color);
+    text-shadow: $light-selected-text-shadow;
+  }
+
+  .projectContainer {
+    @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+
+    .projectTitle {
+      @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+    }
+
+    .projectDescription {
+      @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+    }
+
+    .detailTitle {
+      @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+    }
+
+    .detailContent, .detailLink {
+      @include concavedTextDark($toggle-font-family, $toggle-light-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+
+      a {
+        color: $toggle-light-font-color;
+      }
+    }
+
+    .warning {
+      @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+    }
+  }
 }

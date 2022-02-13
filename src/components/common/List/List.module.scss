@@ -1,0 +1,64 @@
+@import '../../../styles/global.scss';
+
+[class*="listContainer-"] {
+  flex: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  .listTitle {
+    text-align: center;
+    padding: 25px;
+    font-size: clamp(12px, calc(12px + 4vw), 34px);
+    max-width: 100%;
+  }
+
+  .list {
+    padding: 0;
+    width: calc(min(100%, 800px));
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: stretch;
+    max-height: calc(max(350px, 50vh));
+
+    .listElement {
+      margin: clamp(0px, calc(0px + 1vw),5px);
+      padding-top: clamp(6px, calc(6px + 3vw), 20px);
+      padding-bottom: clamp(6px, calc(6px + 3vw), 20px);
+      font-size: clamp(8px, calc(8px + .8vw), 24px);
+    }
+  }
+}
+
+.listContainer-light {
+  .listTitle {
+    @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
+    text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+  }
+
+  .list{
+    .listElement {
+      @include concavedTextLight($toggle-font-family, $toggle-dark-font-color);
+      @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+    }
+  }
+}
+
+.listContainer-dark {
+  .listTitle {
+    @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
+    text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+  }
+
+  .list{
+    .listElement {
+      @include concavedTextDark($toggle-font-family, $toggle-light-font-color);
+      @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+    }
+  }
+}

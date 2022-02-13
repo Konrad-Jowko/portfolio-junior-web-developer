@@ -1,0 +1,22 @@
+@import '../../../styles/settings.scss';
+
+[class*="carouselContainer-"] {
+  padding: clamp(-25px, calc(-25px + 10vw), 10px);
+  margin: clamp(-25px, calc(-25px + 10vw), 100px);
+  width: clamp(120px, calc(120px + 45vw), 850px);
+
+    img {
+      width: 100%;
+      object-fit: fill;
+    }
+}
+
+.carouselContainer-light {
+  border: 3px solid $logo-font-light-color;
+  @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+}
+
+.carouselContainer-dark {
+  border: 3px solid $logo-font-dark-color;
+  @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+}

@@ -6,12 +6,16 @@ import { initialState } from './initialState';
 import { reducer as globalReducer } from './globalRedux';
 import { reducer as headerReducer } from './headerRedux';
 import { reducer as portfolioReducer } from './portfolioRedux';
+import { reducer as aboutReducer } from './aboutRedux';
+import { reducer as contactReducer } from './contactRedux';
 
 /* DEFINE REDUCERS */
 const reducers = {
   global: globalReducer,
   header: headerReducer,
   portfolio: portfolioReducer,
+  about: aboutReducer,
+  contact: contactReducer,
 };
 
 /* ADD BLANK REDUCERS FOR INITIAL STATE PROPERTIES WITHOUT REDUCERS */

@@ -7,9 +7,8 @@ import { store } from './redux/store';
 import MainLayout from './components/layout/MainLayout/MainLayoutContainer';
 import Homepage from './components/views/Homepage/HomepageContainer';
 import Portfolio from './components/views/Portfolio/PortfolioContainer';
-import Experience from './components/views/Experience/Experience';
-import Education from './components/views/Education/Education';
-import Contact from './components/views/Contact/Contact';
+import About from './components/views/About/AboutContainer';
+import Contact from './components/views/Contact/ContactContainer';
 
 
 const App = () => (
@@ -19,9 +18,9 @@ const App = () => (
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/portfolio' element={<Portfolio />} />
-          <Route path='/experience' element={<Experience />} />
-          <Route path='/education' element={<Education />} />
+          <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='*' element={<Homepage />} />
         </Routes>
       </MainLayout>
     </BrowserRouter>

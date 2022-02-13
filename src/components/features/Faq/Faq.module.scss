@@ -2,7 +2,7 @@
 
 [class*="aboutContainer-"] {
 
-  .toAbout {
+  .toFaq {
     margin: clamp(5px, calc(5px + 3vh), 50px) auto;
     font-size: clamp(10px, calc(10px + 4vw), 40px);
     transition: ease-in all .5s;
@@ -66,8 +66,8 @@
     .redirect {
       margin: clamp(-20px, calc(-20px + 10vw), 140px);
       padding: clamp(-20px, calc(-20px + 10vw), 150px);
-      padding-top: clamp(100px, calc(100px + 10vw), 150px);
-      width: calc(max(75%, 300px));
+      padding-top: clamp(120px, calc(120px + 10vw), 150px);
+      width: calc(max(75%, 250px));
       font-size: clamp(15px, calc(15px + 1vw), 40px);
       line-height: 2;
       display: flex;
@@ -88,7 +88,7 @@
 }
 
 .aboutContainer-light {
-  .toAbout {
+  .toFaq {
     @include concavedTextLight($font-serif-slab, $loading-light-blend-color);
     text-shadow: none;
 
@@ -179,7 +179,7 @@
 }
 
 .aboutContainer-dark {
-  .toAbout {
+  .toFaq {
     @include concavedTextDark($font-serif-slab, $loading-dark-blend-color);
     text-shadow: none;
 
