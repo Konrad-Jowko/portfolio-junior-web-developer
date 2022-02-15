@@ -1,13 +1,17 @@
 import { connect } from 'react-redux';
 import Contact from './Contact';
 import { getMode, getLanguage } from '../../../redux/globalRedux';
-import { getPL, getENG } from '../../../redux/contactRedux';
+import { getContent, getLang, getContact  } from '../../../redux/contactRedux';
 
 const mapStateToProps = (state) => ({
   mode: getMode(state),
   language: getLanguage(state),
-  contentPL: getPL(state),
-  contentENG: getENG(state),
+  content: getContent(state),
+  contentLang: getLang(state),
 });
 
-export default connect(mapStateToProps)(Contact);
+const mapDispatchToProps = (dispatch) => ({
+  getContact: (lang) => dispatch(getContact(lang)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

@@ -7,33 +7,39 @@ import '../../../styles/fontello/css/fontello.css';
 
 import styles from './Header.module.scss';
 
-const Header = ({elementsPL, elementsENG, mode, language }) => {
-  let options;
+const Header = ({content, mode, language, contentLang, getHeader }) => {
+  if (language !== contentLang) {
+    getHeader(language);
+  }
 
-  if (language === 'eng') options = elementsENG;
-  else if (language === 'pl') options = elementsPL;
 
-  return (
-    <div className={styles.[`headerContainer-${mode}`]} >
-      <Logo />
-      <ul >
-        {options.map(option => (
-          <Button key={option.name} option={option} />
-        ))}
-      </ul>
-      <div className={styles.buttonsContainer}>
-        <ToggleButton lang option1='EN' option2='PL'/>
-        <ToggleButton twoColor option1={<i className={'icon-sun'} />} option2={<i className={'icon-moon'} />} />
+  if(content) {
+    return (
+      <div className={styles.[`headerContainer-${mode}`]} >
+        <Logo />
+        <ul >
+          {content.map(option => (
+            <Button key={option.name} option={option} />
+          ))}
+        </ul>
+        <div className={styles.buttonsContainer}>
+          <ToggleButton lang option1='EN' option2='PL'/>
+          <ToggleButton twoColor option1={<i className={'icon-sun'} />} option2={<i className={'icon-moon'} />} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  else {
+    return null;
+  }
 };
 
 Header.propTypes = {
-  elementsPL: PropTypes.array,
-  elementsENG: PropTypes.array,
+  content: PropTypes.array,
   mode: PropTypes.string,
+  contentLang: PropTypes.string,
   language: PropTypes.string,
+  getHeader: PropTypes.func,
 };
 
 export default Header;

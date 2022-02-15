@@ -1,14 +1,17 @@
 import { connect } from 'react-redux';
 import Homepage from './Homepage';
-import { getMode, getLanguage, getData } from '../../../redux/globalRedux';
-import { getPL, getENG } from '../../../redux/homepageRedux';
+import { getMode, getLanguage } from '../../../redux/globalRedux';
+import { getContent, getLang, getHomepage } from '../../../redux/homepageRedux';
 
 const mapStateToProps = (state) => ({
   mode: getMode(state),
   language: getLanguage(state),
-  contentPL: getPL(state),
-  contentENG: getENG(state),
-  data: getData(state),
+  content: getContent(state),
+  contentLang: getLang(state),
 });
 
-export default connect(mapStateToProps)(Homepage);
+const mapDispatchToProps = (dispatch) => ({
+  getHomepage: (lang) => dispatch(getHomepage(lang)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

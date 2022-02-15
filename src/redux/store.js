@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { initialState } from './initialState';
 import { reducer as globalReducer } from './globalRedux';
 import { reducer as headerReducer } from './headerRedux';
+import { reducer as homepageReducer } from './homepageRedux';
 import { reducer as portfolioReducer } from './portfolioRedux';
 import { reducer as aboutReducer } from './aboutRedux';
 import { reducer as contactReducer } from './contactRedux';
@@ -13,6 +14,7 @@ import { reducer as contactReducer } from './contactRedux';
 const reducers = {
   global: globalReducer,
   header: headerReducer,
+  homepage: homepageReducer,
   portfolio: portfolioReducer,
   about: aboutReducer,
   contact: contactReducer,

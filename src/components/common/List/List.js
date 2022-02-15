@@ -15,7 +15,7 @@ const List = ({mode, elements, title}) => (
 );
 
 List.propTypes = {
-  elements: PropTypes.object,
+  elements: PropTypes.array,
   mode: PropTypes.string,
   title: PropTypes.string,
 };

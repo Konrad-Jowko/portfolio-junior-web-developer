@@ -1,36 +1,51 @@
 import Axios from 'axios';
+import { URL } from '../config';
 
 /* SELECTORS */
-export const getPL = ({portfolio}) => portfolio.pl;
-export const getENG= ({portfolio}) => portfolio.eng;
+export const getContent = ({portfolio}) => portfolio.content;
+export const getLang = ({portfolio}) => portfolio.lang;
 
 /* ACTION NAME CREATOR */
 const reducerName = 'portfolio';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* ACTION TYPES */
-const START_FETCH = createActionName('START_FETCH');
-const FINISH_FETCH = createActionName('FINISH_FETCH');
+const SET_PORTFOLIO = createActionName('SET_PORTFOLIO');
+const SET_LANG = createActionName('SET_LANG');
 
 /* ACTION CREATORS */
-export const startFetch = payload => ({ payload, type: START_FETCH });
-export const finishFetch = payload => ({ payload, type: FINISH_FETCH });
+export const setPortfolio = payload => ({ payload, type: SET_PORTFOLIO });
+export const setLang = payload => ({ payload, type: SET_LANG });
 
 /* THUNK CREATORS */
+
+export const getPortfolio = (lang) => {
+  return (dispatch) => {
+    Axios
+      .get(`${URL}api/portfolio/${lang}`)
+      .then(res => {
+        dispatch(setLang(lang));
+        dispatch(setPortfolio(res.data));
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
+  };
+};
 
 /* REDUCER */
 export const reducer = (statePart = [], action = {}, state) => {
   switch (action.type) {
-    case START_FETCH: {
+    case SET_PORTFOLIO: {
       return {
         ...statePart,
-        fetch: true,
+        content: action.payload,
       };
     }
-    case FINISH_FETCH: {
+    case SET_LANG: {
       return {
         ...statePart,
-        mode: false,
+        lang: action.payload,
       };
     }
     default:

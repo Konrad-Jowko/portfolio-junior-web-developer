@@ -1,13 +1,17 @@
 import { connect } from 'react-redux';
 import Portfolio from './Portfolio';
 import { getMode, getLanguage } from '../../../redux/globalRedux';
-import { getPL, getENG } from '../../../redux/portfolioRedux';
+import { getContent, getLang, getPortfolio } from '../../../redux/portfolioRedux';
 
 const mapStateToProps = (state) => ({
   mode: getMode(state),
   language: getLanguage(state),
-  contentPL: getPL(state),
-  contentENG: getENG(state),
+  content: getContent(state),
+  contentLang: getLang(state),
 });
 
-export default connect(mapStateToProps)(Portfolio);
+const mapDispatchToProps = (dispatch) => ({
+  getPortfolio: (lang) => dispatch(getPortfolio(lang)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Portfolio);

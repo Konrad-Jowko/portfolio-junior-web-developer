@@ -1,36 +1,50 @@
 import Axios from 'axios';
+import { URL } from '../config';
 
 /* SELECTORS */
-export const getNavbarElementsPL = ({header}) => header.navbarElements.pl;
-export const getNavbarElementsENG = ({header}) => header.navbarElements.eng;
+export const getContent = ({header}) => header.content;
+export const getLang = ({header}) => header.lang;
 
 /* ACTION NAME CREATOR */
-const reducerName = 'global';
+const reducerName = 'header';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* ACTION TYPES */
-const START_FETCH = createActionName('START_FETCH');
-const FINISH_FETCH = createActionName('FINISH_FETCH');
+const SET_HEADER = createActionName('SET_HEADER');
+const SET_LANG = createActionName('SET_LANG');
 
 /* ACTION CREATORS */
-export const startFetch = payload => ({ payload, type: START_FETCH });
-export const finishFetch = payload => ({ payload, type: FINISH_FETCH });
+export const setHeader = payload => ({ payload, type: SET_HEADER });
+export const setLang = payload => ({ payload, type: SET_LANG });
 
 /* THUNK CREATORS */
+export const getHeader = (lang) => {
+  return (dispatch) => {
+    Axios
+      .get(`${URL}api/header/${lang}`)
+      .then(res => {
+        dispatch(setLang(lang));
+        dispatch(setHeader(res.data));
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
+  };
+};
 
 /* REDUCER */
 export const reducer = (statePart = [], action = {}, state) => {
   switch (action.type) {
-    case START_FETCH: {
+    case SET_HEADER: {
       return {
         ...statePart,
-        fetch: true,
+        content: action.payload,
       };
     }
-    case FINISH_FETCH: {
+    case SET_LANG: {
       return {
         ...statePart,
-        mode: false,
+        lang: action.payload,
       };
     }
     default:

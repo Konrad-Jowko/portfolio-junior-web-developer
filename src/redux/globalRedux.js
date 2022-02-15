@@ -4,13 +4,13 @@ import Axios from 'axios';
 export const getMode = ({global}) => global.mode;
 export const getLanguage = ({global}) => global.language;
 export const getLoading = ({global}) => global.loading;
-export const getData = (state) => state.contact;
 
 /* ACTION NAME CREATOR */
 const reducerName = 'global';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 /* ACTION TYPES */
+const SET_GLOBAL = createActionName('SET_GLOBAL');
 const SET_DARK_MODE = createActionName('SET_DARK_MODE');
 const SET_LIGHT_MODE = createActionName('SET_LIGHT_MODE');
 const SET_ENG = createActionName('SET_ENG');
@@ -19,6 +19,7 @@ const ENABLE_LOADING = createActionName('ENABLE_LOADING');
 const DISABLE_LOADING = createActionName('DISABLE_LOADING');
 
 /* ACTION CREATORS */
+export const setGlobal = payload => ({ payload, type: SET_GLOBAL });
 export const setDarkMode = payload => ({ payload, type: SET_DARK_MODE });
 export const setLightMode = payload => ({ payload, type: SET_LIGHT_MODE });
 export const setENG = payload => ({ payload, type: SET_ENG });
@@ -28,11 +29,25 @@ export const disableLoading = payload => ({ payload, type: DISABLE_LOADING });
 
 
 /* THUNK CREATORS */
-
+export const getGlobal = () => {
+  return (dispatch) => {
+    Axios
+      .get(`${URL}api/global`)
+      .then(res => {
+        dispatch(setGlobal(res.data));
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
+  };
+};
 
 /* REDUCER */
 export const reducer = (statePart = [], action = {}, state) => {
   switch (action.type) {
+    case SET_GLOBAL: {
+      return statePart;
+    }
     case SET_DARK_MODE: {
       return {
         ...statePart,
