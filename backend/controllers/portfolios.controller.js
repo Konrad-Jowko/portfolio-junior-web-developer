@@ -1,6 +1,6 @@
 const Portfolio = require('../models/portfolio.model');
 
-/* GET ALL ORDERS */
+/* GET PORTFOLIO COMPONENT CONTENT IN SELECTED LANGUAGE */
 exports.get = async (req, res) => {
   try{
     const results = await Portfolio.find();

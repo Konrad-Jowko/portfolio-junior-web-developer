@@ -4,17 +4,15 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Button.module.scss';
 
-const Button = ({option, mode, type}) => {
-
-  return (
-    <NavLink
-      to={option.link}
-      className={(navData) => navData.isActive ? styles.[`option-${mode}-selected`]: styles.[`option-${mode}`] }
-    >
-      <li> {option.name} </li>
-    </ NavLink>
-  );
-};
+/* BASIC BUTTON WITH NAVIGATION*/
+const Button = ({option, mode, type}) => (
+  <NavLink
+    to={option.link}
+    className={(navData) => navData.isActive ? styles.[`option-${mode}-selected`]: styles.[`option-${mode}`] }
+  >
+    <li> {option.name} </li>
+  </ NavLink>
+);
 
 Button.propTypes = {
   option: PropTypes.object,

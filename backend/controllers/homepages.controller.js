@@ -1,6 +1,6 @@
 const Homepage = require('../models/homepage.model');
 
-/* GET ALL ORDERS */
+/* GET HOMEPAGE COMPONENT CONTENT IN SELECTED LANGUAGE */
 exports.get = async (req, res) => {
   try{
     const results = await Homepage.find();

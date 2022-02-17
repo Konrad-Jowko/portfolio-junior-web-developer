@@ -1,5 +1,6 @@
 @import '../../../styles/global.scss';
 
+/* SETTINGS FOR ALL MODES*/
 [class*="loadingContainer-"] {
   z-index: 1000;
   position: fixed;
@@ -28,6 +29,7 @@
   }
 }
 
+/* SETTINGS FOR LIGHT MODE */
 .loadingContainer-light {
   background: $loading-light-background;
 
@@ -37,6 +39,7 @@
   }
 }
 
+/* SETTINGS FOR DARK MODE */
 .loadingContainer-dark {
   background: $loading-dark-background;
 

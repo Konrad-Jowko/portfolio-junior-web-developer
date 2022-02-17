@@ -4,9 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './LoadingScreen.module.scss';
 
+/* LOADING SCREEN COMPONENT, HIDING ELEMENTS THAT DO NOT LOAD INSTANTLY */
 const LoadingScreen = ({mode, lang, disableLoading}) => {
   useEffect(() => {
-    setTimeout(() => disableLoading(), 3000);
+    setTimeout(() => disableLoading(), 2000);
   }, []);
 
   return (

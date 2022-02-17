@@ -1,5 +1,6 @@
 @import '../../../styles/global.scss';
 
+/* SETTINGS FOR ALL MODES*/
 [class*="option"] {
   min-width: clamp(115px, calc(115px + 4vw), 250px);
   margin: .5em .3em;
@@ -17,6 +18,7 @@
   }
 }
 
+/* SETTINGS FOR LIGHT MODE */
 .option-light, .option-light-selected {
   border: 3px solid $button-light-font-color;
   border-radius: .25em;
@@ -35,6 +37,7 @@
   border-color: $button-light-blend-color;
 }
 
+/* SETTINGS FOR DARK MODE */
 .option-dark, .option-dark-selected {
   border: 3px solid $button-dark-font-color;
   border-radius: .25em;

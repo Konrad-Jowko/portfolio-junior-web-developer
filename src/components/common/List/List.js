@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './List.module.scss';
 
+/* RESPONSIVE LIST ELEMENT */
 const List = ({mode, elements, title}) => (
   <div className={styles.[`listContainer-${mode}`]}>
     <div className={styles.listTitle}> {title} </div>

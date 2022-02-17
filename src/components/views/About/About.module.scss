@@ -1,5 +1,6 @@
 @import '../../../styles/global.scss';
 
+/* SETTINGS FOR ALL MODES*/
 [class*="aboutContainer-"] {
   z-index: 1;
   min-height: 100%;
@@ -11,13 +12,13 @@
   .aboutTitle {
     text-align: center;
     padding-bottom: 15px;
-    font-size: clamp(15px, calc(15px + 4vw), 70px);
+    font-size: $about-title-font-size;
   }
 
   .aboutSubtitle1, .aboutSubtitle2 {
     text-align: right;
     padding: 5px;
-    font-size: clamp(12px, calc(12px + 1vw), 30px);
+    font-size: $about-subtitle-font-size;
   }
 
   .aboutSubtitle2 {
@@ -40,13 +41,13 @@
       .sectionTitle {
         text-align: center;
         padding: 5px;
-        font-size: clamp(24px, calc(24px + 1vw), 42px);
+        font-size: $about-section-title-font-size;
       }
 
       .sectionDescription {
         text-align: center;
         padding: 5px;
-        font-size: clamp(12px, calc(12px + 1vw), 30px);
+        font-size: $about-section-description-font-size;
       }
 
       .sectionBox {
@@ -61,15 +62,15 @@
         .subsectionDate, .subsectionName {
           text-align: justify;
           padding: clamp(5px, calc(5px + .5vw), 15px);
-          font-size: clamp(12px, calc(12px + 1vw), 24px);
+          font-size: $about-subsection-date-font-size;
         }
 
         .subsectionName {
-          font-size: clamp(14px, calc(14px + 1vw), 32px);
+          font-size: $about-subsection-title-font-size;
         }
 
         .subsectionDescripion {
-          font-size: clamp(12px, calc(12px + 1vw), 24px);
+          font-size: $about-subsection-description-font-size;
           text-align: justify;
           padding: 5px;
         }
@@ -81,16 +82,16 @@
           flex-flow: column nowrap;
 
           .keyPointsTitle {
-            margin-top: clamp(0px, calc(0px + 5vw), 80px);
+            margin-top: clamp(.1px, calc(.1px + 5vw), 80px);
             margin-bottom: 25px;
-            font-size: clamp(14px, calc(14px + 2vw), 38px);
+            font-size: $about-key-points-title-font-size;
             text-align: center;
             padding: 15px;
           }
 
           .keyPoint {
             width: calc(max(50%, 250px  ));
-            font-size: clamp(12px, calc(12px + 1vw), 24px);
+            font-size: $about-key-points-content-font-size;
             text-align: center;
             margin: 25px 0 25px auto;
             padding: 35px 20px;
@@ -106,129 +107,109 @@
   }
 }
 
+/* SETTINGS FOR LIGHT MODE */
 .aboutContainer-light {
-  .aboutTitle {
-    @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-    text-shadow: $light-selected-text-shadow;
+  .aboutTitle, .sectionTitle, .subsectionDate, .subsectionName, .keyPointsTitle {
+    @include concavedTextLight($about-title-font-family, $about-light-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($about-title-font-family, $about-light-blend-color);
+      text-shadow: $about-light-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      color: $about-light-font-color;
+    }
   }
 
-  .aboutSubtitle1, .aboutSubtitle2 {
+  .aboutSubtitle1, .aboutSubtitle2, .sectionDescription, .subsectionDescripion, .keyPoint {
     opacity: .2;
-    @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextLight($about-title-font-family, $about-light-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($about-title-font-family, $about-light-blend-color);
+      text-shadow: $about-light-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      color: $about-dark-font-color;
+    }
   }
 
-  .aboutBox {
-    .sectionContainer {
-      @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+  .sectionContainer {
+    @include concavedDiv($about-light-inset-shadow, $about-light-shadow);
 
-      .sectionTitle {
-        @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-        text-shadow: $light-selected-text-shadow;
-      }
+    .subsectionContainer {
+      @include concavedDiv($about-light-inset-shadow, $about-light-shadow);
+    }
 
-      .sectionDescription {
-        opacity: .2;
-        @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
-        text-shadow: $light-selected-text-shadow;
-      }
+    .subsectionDate[class*="showWhole"] {
+      color: $about-dark-font-color;
+    }
 
-      .sectionBox {
-        .subsectionContainer {
-          @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
-        }
+    .keyPoint {
+      opacity: 1;
 
-        .subsectionDate {
-          @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
-          text-shadow: $light-selected-text-shadow;
-        }
-
-        .subsectionName {
-          @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-          text-shadow: $light-selected-text-shadow;
-        }
-
-        .subsectionDescripion {
-          opacity: .2;
-          @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
-          text-shadow: $light-selected-text-shadow;
-        }
-
-        .keyPointsContainer {
-          .keyPointsTitle {
-            @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-            text-shadow: $light-selected-text-shadow;
-          }
-          .keyPoint {
-            @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
-            @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
-            text-shadow: $light-selected-text-shadow;
-          }
-        }
+      &[class*="showOutline"] {
+        @include concavedDiv($about-light-inset-shadow, $about-light-shadow);
       }
     }
   }
 }
 
+/* SETTINGS FOR DARK MODE */
 .aboutContainer-dark {
-  .aboutTitle {
-    @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
-    text-shadow: $dark-selected-text-shadow;
+  .aboutTitle, .sectionTitle, .subsectionDate, .subsectionName, .keyPointsTitle {
+    @include concavedTextDark($about-title-font-family, $about-dark-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($about-title-font-family, $about-dark-blend-color);
+      text-shadow: $about-dark-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      color: $about-dark-font-color;
+    }
   }
 
-  .aboutSubtitle1, .aboutSubtitle2 {
+  .aboutSubtitle1, .aboutSubtitle2, .sectionDescription, .subsectionDescripion, .keyPoint {
     opacity: .2;
-    @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextLight($about-title-font-family, $about-dark-blend-color);
+    text-shadow: none;
+    transition: all .25s ease-in;
+
+    &[class*="showOutline"] {
+      @include concavedTextLight($about-title-font-family, $about-dark-blend-color);
+      text-shadow: $about-dark-text-shadow;
+    }
+
+    &[class*="showWhole"] {
+      color: $about-light-font-color;
+    }
   }
 
-  .aboutBox {
-    .sectionContainer {
-      @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+  .sectionContainer {
+    @include concavedDiv($about-dark-inset-shadow, $about-dark-shadow);
 
-      .sectionTitle {
-        @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
-        text-shadow: $dark-selected-text-shadow;
-      }
+    .subsectionContainer {
+      @include concavedDiv($about-dark-inset-shadow, $about-dark-shadow);
+    }
 
-      .sectionDescription {
-        opacity: .7;
-        @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-        text-shadow: $light-selected-text-shadow;
-      }
+    .subsectionDate[class*="showWhole"] {
+      color: $about-light-font-color;
+    }
 
-      .sectionBox {
-        .subsectionContainer {
-          @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
-        }
+    .keyPoint {
+      opacity: 1;
 
-        .subsectionDate {
-          @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-          text-shadow: $light-selected-text-shadow;
-        }
-
-        .subsectionName {
-          @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
-          text-shadow: $dark-selected-text-shadow;
-        }
-
-        .subsectionDescripion {
-          opacity: .7;
-          @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-          text-shadow: $light-selected-text-shadow;
-        }
-
-        .keyPointsContainer {
-          .keyPointsTitle {
-            @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
-            text-shadow: $dark-selected-text-shadow;
-          }
-          .keyPoint {
-            @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
-            @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-            text-shadow: $light-selected-text-shadow;
-          }
-        }
+      &[class*="showOutline"] {
+        @include concavedDiv($about-dark-inset-shadow, $about-dark-shadow);
       }
     }
   }

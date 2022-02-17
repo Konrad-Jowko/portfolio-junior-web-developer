@@ -1,5 +1,6 @@
 @import '../../../styles/global.scss';
 
+/* SETTINGS FOR ALL MODES*/
 [class*="contactContainer-"] {
   z-index: 1;
   min-height: 100%;
@@ -11,13 +12,13 @@
   .contactTitle {
     text-align: center;
     padding-bottom: 15px;
-    font-size: clamp(15px, calc(15px + 4vw), 70px);
+    font-size: $contact-title-font-size;
   }
 
   .contactSubtitle {
     text-align: left;
     padding: 5px;
-    font-size: clamp(12px, calc(12px + 1vw), 30px);
+    font-size: $contact-subtitle-font-size;
   }
 
   .contactBox {
@@ -47,12 +48,12 @@
         transition: opacity .5s ease-in;
 
         i {
-          font-size: calc(54px + 1vw);
+          font-size: $contact-icon-size;
         }
       }
 
       .copyable {
-        font-size: clamp(10px, calc(10px + 1vw), 20px);
+        font-size: $contact-copyable-font-size;
         display: flex;
         flex-flow: column nowrap;
 
@@ -68,69 +69,66 @@
   }
 }
 
+/* SETTINGS FOR LIGHT MODE */
 .contactContainer-light {
   .contactTitle {
-    @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextLight($contact-title-font-size, $contact-light-font-color);
+    text-shadow: $contact-light-text-shadow;
   }
 
-  .contactSubtitle {
+  .contactSubtitle, .sectionDescription {
     opacity: .2;
-    @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextLight($contact-title-font-size, $contact-dark-font-color);
+    text-shadow: $contact-light-text-shadow;
   }
 
   .contactBox {
     .sectionContainer {
-      @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+      @include concavedDiv($contact-light-inset-shadow, $contact-light-shadow);
 
       .sectionDescription {
-        @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
-        text-shadow: $light-selected-text-shadow;
+        opacity: 1;
       }
 
-      .link {
-        a {
-          @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-        }
+      .link a {
+        @include concavedTextLight($contact-title-font-size, $contact-light-font-color);
       }
+
 
       .copyable {
-        @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
+        @include concavedTextLight($contact-title-font-size, $contact-light-font-color);
       }
     }
   }
 }
 
+/* SETTINGS FOR DARK MODE */
 .contactContainer-dark {
   .contactTitle {
-    @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
-    text-shadow: $dark-selected-text-shadow;
+    @include concavedTextDark($contact-title-font-size, $contact-dark-font-color);
+    text-shadow: $contact-dark-text-shadow;
   }
 
-  .contactSubtitle {
+  .contactSubtitle, .sectionDescription {
     opacity: .7;
-    @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextLight($contact-title-font-size, $contact-light-font-color);
+    text-shadow: $contact-light-text-shadow;
   }
 
   .contactBox {
     .sectionContainer {
-      @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+      @include concavedDiv($contact-dark-inset-shadow, $contact-dark-shadow);
 
       .sectionDescription {
-        @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-        text-shadow: $light-selected-text-shadow;
+        opacity: 1;
       }
 
-      .link {
-        a {
-          @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
-        }
+      .link a {
+        @include concavedTextDark($contact-title-font-size, $contact-dark-font-color);
       }
 
       .copyable {
-        @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
+        @include concavedTextDark($contact-title-font-size, $contact-dark-font-color);
       }
     }
   }

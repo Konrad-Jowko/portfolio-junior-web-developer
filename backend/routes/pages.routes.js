@@ -6,6 +6,7 @@ const PortfoliosController = require('../controllers/portfolios.controller');
 const AboutsController = require('../controllers/abouts.controller');
 const ContactsController = require('../controllers/contacts.controller');
 
+/* ROUTES TO COMPONENT CONTROLLERS */
 router.get('/header/:lang', HeadersController.get);
 router.get('/homepage/:lang', HomepagesController.get);
 router.get('/portfolio/:lang', PortfoliosController.get);

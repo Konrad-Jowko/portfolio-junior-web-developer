@@ -1,5 +1,6 @@
 @import '../../../styles/settings.scss';
 
+/* SETTINGS FOR ALL MODES*/
 [class*="carouselContainer-"] {
   padding: clamp(-25px, calc(-25px + 10vw), 10px);
   margin: clamp(-25px, calc(-25px + 10vw), 100px);
@@ -11,12 +12,14 @@
     }
 }
 
+/* SETTINGS FOR LIGHT MODE */
 .carouselContainer-light {
-  border: 3px solid $logo-font-light-color;
-  @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+  border: 3px solid $carousel-light-border-color;
+  @include concavedDiv($carousel-light-inset-shadow, $carousel-light-shadow);
 }
 
+/* SETTINGS FOR DARK MODE */
 .carouselContainer-dark {
-  border: 3px solid $logo-font-dark-color;
-  @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+  border: 3px solid $carousel-dark-border-color;
+  @include concavedDiv($carousel-dark-inset-shadow, $carousel-dark-shadow);
 }

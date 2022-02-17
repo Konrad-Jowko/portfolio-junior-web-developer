@@ -4,13 +4,17 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './Faq.module.scss';
 
+/* COMPONENT EXTENDING HOMEPAGE WITH ADDITIONAL INFORMATION */
 const Faq = ({mode, content}) => {
+
+  // Setting observers for component elements to perform animation based on component position
   const setObservers = () => {
     const toFaq = document.querySelector('[class*="toFaq"]');
     const redirect = document.querySelector('[class*="redirect"]');
     const titles = document.querySelectorAll('[class*="elementTitle"]');
     const subtitles = document.querySelectorAll('[class*="elementSubtitle"]');
     const contents = document.querySelectorAll('[class*="elementContent"]');
+    const image = document.querySelector('img');
 
     const outlineOptions = {
       threshold: .35  ,
@@ -65,7 +69,8 @@ const Faq = ({mode, content}) => {
     outlineObserver.observe(redirect);
     fadeInObserver.observe(redirect);
 
-
+    outlineObserver.observe(image);
+    fadeInObserver.observe(image);
   };
 
   useEffect(() => {
@@ -88,6 +93,8 @@ const Faq = ({mode, content}) => {
               {element.subtitle}
             </div>
             <div className={styles.elementContent}>
+              {element.photo ?
+                <div className={styles.elementImage}> <img alt={element.photo}  src={`/images/${element.photo}`} /> </div> : null}
               {element.content}
             </div>
           </div>

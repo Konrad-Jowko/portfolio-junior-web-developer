@@ -25,6 +25,8 @@ $font-serif-slab: 'Roboto Slab', serif;
 // Misc
 $light-selected-text-shadow: 0px 1px 0px rgba(255,255,255,.6), 0px -1px 0px rgba(0,0,0,.5);
 $dark-selected-text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(155,155,155,.2);
+$hover-text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+$hover-text-dark-shadow:  0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
 
 
 /* COMMON COMPONENTS SETTINGS */
@@ -40,6 +42,25 @@ $loading-light-blend-color: $light-background-color;
 $loading-dark-background: $dark-background-color;
 $loading-font-dark-color: $pastel-violet-color;
 $loading-dark-blend-color: $dark-background-color;
+
+// Carousel
+$carousel-light-border-color: $pastel-pink-color;
+$carousel-light-shadow: $light-shadow-color;
+$carousel-light-inset-shadow: $light-inset-shadow-color;
+
+$carousel-dark-border-color: $pastel-violet-color;
+$carousel-dark-shadow: $dark-shadow-color;
+$carousel-dark-inset-shadow: $dark-inset-shadow-color;
+
+// list
+
+$list-title-font-size:  clamp(12px, calc(12px + 4vw), 34px);
+$list-element-font-size: clamp(8px, calc(8px + .8vw), 24px);
+$list-element-font-family: $font-no-serif-inset;
+$list-text-shadow: $hover-text-shadow;
+
+$list-light-font-color: $pastel-pink-color;
+$list-dark-font-color: $pastel-violet-color;
 
 // Button
 $button-font-family: $font-no-serif-inset;
@@ -86,6 +107,25 @@ $logo-light-selected-text-shadow: $light-selected-text-shadow;
 $logo-font-dark-color: $pastel-violet-color;
 $logo-dark-selected-text-shadow: $dark-selected-text-shadow;
 
+// FAQ
+$faq-font-size: clamp(10px, calc(10px + 4vw), 40px);
+$faq-icon-size: clamp(40px, calc(40px + 4vw), 70px);
+$faq-title-font-size: clamp(15px, calc(15px + 4vw), 70px);
+$faq-subtitle-font-size: clamp(12px, calc(12px + 1vw), 30px);
+$faq-content-font-size: clamp(18px, calc(18px + 1vw), 45px);
+$faq-redirect-font-size: clamp(15px, calc(15px + 1vw), 40px);
+$faq-button-font-size: clamp(15px, calc(15px + 5vw), 50px);
+$faq-title-font-family: $font-serif-slab;
+$faq-content-font-family: $font-no-serif-inset;
+
+$faq-light-blend-color: $light-background-color;
+$faq-light-font-color: $pastel-pink-color;
+$faq-light-text-shadow: $hover-text-shadow;
+
+$faq-dark-font-color: $pastel-violet-color;
+$faq-dark-blend-color: $dark-background-color;
+$faq-dark-text-shadow: $dark-selected-text-shadow;
+
 /* LAYOUT COMPONENTS SETTINGS */
 
 // MainLayout
@@ -105,8 +145,88 @@ $header-dark-decor-color: $pastel-violet-color;
 
 /* VIEWS SETTINGS */
 
+// About
+$about-title-font-size: clamp(15px, calc(15px + 4vw), 70px);
+$about-subtitle-font-size: clamp(12px, calc(12px + 1vw), 30px);
+$about-section-title-font-size: clamp(24px, calc(24px + 1vw), 42px);
+$about-section-description-font-size: clamp(10px, calc(10px + 1vw), 30px);
+$about-subsection-date-font-size: clamp(12px, calc(12px + 1vw), 24px);
+$about-subsection-title-font-size: clamp(14px, calc(14px + 1vw), 32px);
+$about-subsection-description-font-size: clamp(12px, calc(12px + 1vw), 24px);
+$about-key-points-title-font-size: clamp(14px, calc(14px + 2vw), 38px);
+$about-key-points-content-font-size: clamp(12px, calc(12px + 1vw), 24px);
+$about-title-font-family: $font-serif-slab;
 
+$about-light-blend-color: $light-background-color;
+$about-light-text-shadow: $light-selected-text-shadow;
+$about-light-font-color: $pastel-pink-color;
+$about-light-shadow: $light-shadow-color;
+$about-light-inset-shadow: $light-inset-shadow-color;
 
+$about-dark-blend-color: $dark-background-color;
+$about-dark-text-shadow: $dark-selected-text-shadow;
+$about-dark-font-color: $pastel-violet-color;
+$about-dark-shadow: $dark-shadow-color;
+$about-dark-inset-shadow: $dark-inset-shadow-color;
+
+// Contact
+$contact-title-font-size: clamp(15px, calc(15px + 4vw), 70px);
+$contact-subtitle-font-size: clamp(12px, calc(12px + 1vw), 30px);
+$contact-icon-size: calc(54px + 1vw);
+$contact-copyable-font-size: clamp(10px, calc(10px + 1vw), 20px);
+$contact-font-family: $font-serif-slab;
+
+$contact-light-font-color: $pastel-pink-color;
+$contact-light-text-shadow: $light-selected-text-shadow;
+$contact-light-shadow: $light-shadow-color;
+$contact-light-inset-shadow: $light-inset-shadow-color;
+
+$contact-dark-font-color: $pastel-violet-color;
+$contact-dark-text-shadow: $dark-selected-text-shadow;
+$contact-dark-shadow: $dark-shadow-color;
+$contact-dark-inset-shadow: $dark-inset-shadow-color;
+
+// Homepage
+$homepage-title-font-size: clamp(25px, calc(25px + 5vw), 70px);
+$homepage-subtitle-font-size: clamp(12px, calc(12px + 5vw), 36px);
+$homepage-highlight-font-size: clamp(12px, calc(12px + 5vw), 42px);
+$homepage-redirect-font-size: clamp(12px, calc(12px + 5vw), 40px);
+$homepage-font-family: $font-serif-slab;
+
+$homepage-light-background-color: $light-background-color;
+$homepage-light-font-color: $pastel-pink-color;
+$homepage-light-text-shadow: $light-selected-text-shadow;
+$homepage-light-blend-color: $light-background-color;
+
+$homepage-dark-background-color: $dark-background-color;
+$homepage-dark-font-color: $pastel-violet-color;
+$homepage-dark-text-shadow: $dark-selected-text-shadow;
+$homepage-dark-blend-color: $dark-background-color;
+
+// Portfolio
+
+$portfolio-title-font-size: clamp(15px, calc(15px + 4vw), 70px);
+$portfolio-subtitle-font-size:  clamp(12px, calc(12px + 1vw), 30px);
+$portfolio-project-title-font-size: clamp(24px, calc(24px + 1vw), 55px);
+$portfolio-project-description-font-size: clamp(14px, calc(14px + 1vw), 28px);
+$portfolio-detail-title-font-size: clamp(12px, calc(12px + 4vw), 34px);
+$portfolio-detail-content-font-size: clamp(12px, calc(12px + 1vw), 25px);
+$portfolio-detail-link-font-size: clamp(12px, calc(12px + 4vw), 34px);
+$portfolio-detail-warning-font-size: clamp(10px, calc(10px + 4vw), 20px);
+$portfolio-title-font: $font-serif-slab;
+$portfolio-content-font: $font-no-serif-inset;
+
+$portfolio-light-font-color: $pastel-pink-color;
+$portfolio-light-text-shadow: $hover-text-shadow;
+$portfolio-light-inset-shadow: $light-inset-shadow-color;
+$portfolio-light-shadow: $light-shadow-color;
+$portfolio-light-blend-color: $light-background-color;
+
+$portfolio-dark-font-color: $pastel-violet-color;
+$portfolio-dark-text-shadow: $dark-selected-text-shadow;
+$portfolio-dark-inset-shadow: $dark-inset-shadow-color;
+$portfolio-dark-shadow: $dark-shadow-color;
+$portfolio-dark-blend-color: $dark-background-color;
 
 /* GLOBAL MIXINS */
 
@@ -123,7 +243,7 @@ $header-dark-decor-color: $pastel-violet-color;
   text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.2);
 
   &:hover {
-    text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+    text-shadow: $hover-text-shadow;
   }
 }
 
@@ -134,7 +254,7 @@ $header-dark-decor-color: $pastel-violet-color;
   text-shadow: 0px 1px 0px rgba(255,255,255,.2), 0px -1px 0px rgba(155,155,155,.2);
 
   &:hover {
-    text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+    text-shadow: $hover-text-dark-shadow;
   }
 }
 

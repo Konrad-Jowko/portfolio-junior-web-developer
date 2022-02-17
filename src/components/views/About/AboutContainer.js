@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import About from './About';
-import { getMode, getLanguage } from '../../../redux/globalRedux';
+import { getMode, getLanguage, enableLoading} from '../../../redux/globalRedux';
 import { getContent, getLang, getAbout  } from '../../../redux/aboutRedux';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  enableLoading: () => dispatch(enableLoading()),
   getAbout: (lang) => dispatch(getAbout(lang)),
 });
 

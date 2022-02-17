@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ToggleButton from './ToggleButton';
-import {getMode, getLanguage, setDarkMode, setLightMode, setENG, setPL, enableLoading} from '../../../redux/globalRedux';
+import {getMode, getLanguage, setMode, setLang, enableLoading} from '../../../redux/globalRedux';
 
 const mapStateToProps = (state) => ({
   mode: getMode(state),
@@ -8,10 +8,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setDarkMode: () => dispatch(setDarkMode()),
-  setLightMode: () => dispatch(setLightMode()),
-  setENG: () => dispatch(setENG()),
-  setPL: () => dispatch(setPL()),
+  setMode: (mode) => dispatch(setMode(mode)),
+  setLang: (lang) => dispatch(setLang(lang)),
   enableLoading: () => dispatch(enableLoading()),
 });
 

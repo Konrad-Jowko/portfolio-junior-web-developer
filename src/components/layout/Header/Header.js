@@ -7,11 +7,14 @@ import '../../../styles/fontello/css/fontello.css';
 
 import styles from './Header.module.scss';
 
+/* HEADER COMPONENT, PRESENTING LOGO, NAVIGATION AND TOGGLE BUTTONS */
+
 const Header = ({content, mode, language, contentLang, getHeader }) => {
+
+  // If chosen language does not fit loaded language, load new language
   if (language !== contentLang) {
     getHeader(language);
   }
-
 
   if(content) {
     return (

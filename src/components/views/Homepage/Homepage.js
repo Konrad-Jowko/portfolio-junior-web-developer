@@ -6,11 +6,15 @@ import Faq from '../../features/Faq/Faq';
 
 import styles from './Homepage.module.scss';
 
-const Homepage = ({mode, language, contentLang, content, getHomepage}) => {
+/* HOMEPAGE COMPONENT, WELCOMING SITE VISITORS AND OFFERING SOME INFORMATION */
+const Homepage = ({mode, language, contentLang, content, getHomepage, enableLoading}) => {
+
+  // If chosen language does not fit loaded language, load new language
   if (language !== contentLang) {
     getHomepage(language);
   }
 
+  // Setting observers for component elements to perform animation based on component position
   const setObservers = () => {
     if(content) {
       const title = document.querySelector('[class*="homepageTitle"]');
@@ -41,6 +45,11 @@ const Homepage = ({mode, language, contentLang, content, getHomepage}) => {
   useEffect(() => {
     setObservers();
   });
+
+  useEffect(() => {
+    enableLoading();
+  }, []);
+
 
   if(content) {
     return (

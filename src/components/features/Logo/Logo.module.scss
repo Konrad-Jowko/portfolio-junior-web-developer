@@ -1,6 +1,6 @@
 @import '../../../styles/global.scss';
 
-/* SETTINGS FOR ALL MODES */
+/* SETTINGS FOR ALL MODES*/
 [class*='selectedLogo-'], [class*='logoContainer-'] {
   font-size: 55px;
   display: flex;
@@ -19,30 +19,21 @@
   }
 }
 
-/* LIGHT MODE */
-
+/* SETTINGS FOR LIGHT MODE */
 .selectedLogo-light, .logoContainer-light {
     @include concavedTextLight($logo-font-family, $logo-font-light-color);
+
+    &:hover {
+      text-shadow: $light-selected-text-shadow;
+    }
 }
 
-.selectedLogo-light {
-  text-shadow: $light-selected-text-shadow;
 
-  &:hover {
-    text-shadow: $light-selected-text-shadow;
-  }
-}
-
-/* DARK MODE */
-
+/* SETTINGS FOR DARK MODE */
 .selectedLogo-dark, .logoContainer-dark {
     @include concavedTextDark($logo-font-family, $logo-font-dark-color);
-}
 
-.selectedLogo-dark {
-  text-shadow: $logo-dark-selected-text-shadow;
-
-  &:hover {
-    text-shadow: $logo-dark-selected-text-shadow;
-  }
+    &:hover {
+      text-shadow: $logo-dark-selected-text-shadow;
+    }
 }

@@ -1,5 +1,6 @@
 @import '../../../styles/global.scss';
 
+/* SETTINGS FOR ALL MODES*/
 [class*="portfolioContainer-"] {
   z-index: 1;
   min-height: 100%;
@@ -11,13 +12,13 @@
   .portfolioTitle {
     text-align: center;
     padding-bottom: 15px;
-    font-size: clamp(15px, calc(15px + 4vw), 70px);
+    font-size: $portfolio-title-font-size;
   }
 
   .portfolioSubtitle1, .portfolioSubtitle2 {
     text-align: right;
     padding: 5px;
-    font-size: clamp(12px, calc(12px + 1vw), 30px);
+    font-size: $portfolio-subtitle-font-size;
   }
 
   .portfolioSubtitle2 {
@@ -38,13 +39,13 @@
       margin-top: clamp(3vh, calc(3vh + 4vw),10vh);
 
       .projectTitle {
-        font-size: clamp(24px, calc(24px + 1vw), 55px);
+        font-size: $portfolio-project-title-font-size;
         margin-bottom: 20px;
       }
 
       .projectDescription {
         line-height: 1.5;
-        font-size: clamp(14px, calc(14px + 1vw), 28px);
+        font-size: $portfolio-project-description-font-size;
         text-align: justify;
       }
 
@@ -62,7 +63,7 @@
           margin: 30px;
 
           .detailTitle {
-            font-size: clamp(12px, calc(12px + 4vw), 34px);
+            font-size: $portfolio-detail-title-font-size;
             margin-bottom: 20px;
           }
 
@@ -70,11 +71,11 @@
             line-height: 1.5;
             display: flex;
             justify-content: center;
-            padding-top: clamp(0px, calc(0px + 2vw), 35px);
-            padding-right: clamp(0px, calc(0px + 2vw), 35px);
-            padding-bottom: 0px;
-            padding-left: clamp(0px, calc(0px + 2vw), 35px);
-            font-size: clamp(12px, calc(12px + 1vw), 25px);
+            padding-top: clamp(.1px, calc(.1px + 2vw), 35px);
+            padding-right: clamp(.1px, calc(.1px + 2vw), 35px);
+            padding-bottom: .1px;
+            padding-left: clamp(.1px, calc(.1px + 2vw), 35px);
+            font-size: $portfolio-detail-content-font-size;
             text-align: justify;
             text-decoration: none;
 
@@ -82,14 +83,14 @@
               text-align: center;
               width: 25%;
               display: block;
-              font-size: clamp(12px, calc(12px + 4vw), 34px);
+              font-size: $portfolio-detail-link-font-size;
             }
           }
 
           .warning {
             padding-top: 15px;
             display: block;
-            font-size: clamp(10px, calc(10px + 4vw), 20px);
+            font-size: $portfolio-detail-warning-font-size;
           }
         }
       }
@@ -107,94 +108,66 @@
   transition: all .5s ease-in;
 }
 
+/* SETTINGS FOR LIGHT MODE */
 .portfolioContainer-light {
-  .portfolioTitle {
-    @include concavedTextLight($font-serif-slab, $toggle-light-font-color);
-    text-shadow: $light-selected-text-shadow;
+  .portfolioTitle, .projectTitle, .projectDescription, .detailTitle, .warning {
+    @include concavedTextLight($portfolio-title-font, $portfolio-light-font-color);
+    text-shadow: $portfolio-light-text-shadow;
   }
 
-  .portfolioSubtitle1, .portfolioSubtitle2 {
+  .portfolioSubtitle1, .portfolioSubtitle2, .detailContent, .detailLink {
     opacity: .2;
-    @include concavedTextLight($font-serif-slab, $toggle-dark-font-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextLight($portfolio-title-font, $portfolio-dark-font-color);
+    text-shadow: $portfolio-dark-text-shadow;
   }
 
   .projectContainer {
-    @include concavedDiv($header-light-inset-shadow, $header-light-shadow);
+    @include concavedDiv($portfolio-light-inset-shadow, $portfolio-light-shadow);
 
-    .projectTitle {
-      @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
-    }
-
-    .projectDescription {
-      @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
-    }
-
-    .detailTitle {
-      @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
-    }
-
-    .detailContent, .detailLink {
-      @include concavedTextLight($toggle-font-family, $toggle-dark-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+    .projectTitle, .projectDescription, .detailTitle, .detailContent, .detailLink, .warning {
+      opacity: 1;
+      font-family: $portfolio-content-font;
 
       a {
-        color: $toggle-dark-font-color;
-      }
-    }
+        color: $portfolio-dark-font-color;
+        transition: all .5s ease-in;
 
-    .warning {
-      @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.4), 0px -1px 0px rgba(0,0,0,.4);
+        &:hover {
+          color: $portfolio-light-blend-color;
+        }
+      }
     }
   }
 }
 
+/* SETTINGS FOR DARK MODE */
 .portfolioContainer-dark{
-  .portfolioTitle {
-    @include concavedTextDark($font-serif-slab, $toggle-dark-font-color);
-    text-shadow: $dark-selected-text-shadow;
+  .portfolioTitle, .projectTitle, .projectDescription, .detailTitle, .warning {
+    @include concavedTextDark($portfolio-title-font, $portfolio-dark-font-color);
+    text-shadow: $portfolio-dark-text-shadow;
   }
 
-  .portfolioSubtitle1, .portfolioSubtitle2 {
+  .portfolioSubtitle1, .portfolioSubtitle2, .detailContent, .detailLink {
     opacity: .8;
-    @include concavedTextDark($font-serif-slab, $toggle-light-font-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextDark($portfolio-title-font, $portfolio-light-font-color);
+    text-shadow: $portfolio-light-text-shadow;
   }
 
   .projectContainer {
-    @include concavedDiv($button-dark-inset-shadow, $button-dark-shadow);
+    @include concavedDiv($portfolio-dark-inset-shadow, $portfolio-dark-shadow);
 
-    .projectTitle {
-      @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
-    }
-
-    .projectDescription {
-      @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
-    }
-
-    .detailTitle {
-      @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
-    }
-
-    .detailContent, .detailLink {
-      @include concavedTextDark($toggle-font-family, $toggle-light-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+    .projectTitle, .projectDescription, .detailTitle, .detailContent, .detailLink, .warning {
+      opacity: 1;
+      font-family: $portfolio-content-font;
 
       a {
-        color: $toggle-light-font-color;
-      }
-    }
+        color: $portfolio-light-font-color;;
+        transition: all .5s ease-in;
 
-    .warning {
-      @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
-      text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(155,155,155,.2);
+        &:hover {
+          color: $portfolio-dark-blend-color;
+        }
+      }
     }
   }
 }

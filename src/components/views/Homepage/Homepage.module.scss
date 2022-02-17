@@ -1,5 +1,6 @@
 @import '../../../styles/global.scss';
 
+/* SETTINGS FOR ALL MODES*/
 [class*="homepageContainer-"] {
   z-index: 1;
   position: absolute;
@@ -20,7 +21,6 @@
   .homepageBox {
     z-index: 1;
     width: 100%;
-    // margin: clamp(0px, calc(0px + 5vw), 70px);
     margin-top: clamp(50px, calc(50px + 5vw), 120px);
     position: relative;
     top: -120px;
@@ -30,7 +30,7 @@
     .homepageTitle {
       margin-top: clamp(50px, calc(50px + 5vw), 120px);
       line-height: 1.2;
-      font-size: clamp(25px, calc(25px + 5vw), 70px);
+      font-size: $homepage-title-font-size;
       font-weight: bold;
       transition: ease-in all .5s;
       display: flex;
@@ -39,20 +39,21 @@
 
     .homepageSubtitle {
       max-width: 100%;
-      font-size: clamp(12px, calc(12px + 5vw), 36px);
+      font-size: $homepage-subtitle-font-size;
       transition: ease-in all .5s;
 
       .highlight, .toPortfolioLink {
         display: inline-block;
-        font-size: clamp(12px, calc(12px + 5vw), 42px);
+        font-size: $homepage-highlight-font-size;
         margin-top: 15px;
-        margin-left: clamp(0px, calc(0px + 2vw), 50px);
+        margin-left: clamp(.1px, calc(.1px + 2vw), 50px);
       }
     }
     .toPortfolio {
+      align-self: flex-end;
       padding: 50px 0 0 0;
-      margin: clamp(0px, calc(0px + 5vw), 110px) 0 0 auto;
-      font-size: clamp(12px, calc(12px + 5vw), 40px);
+      margin: clamp(.1px, calc(.1px + 5vw), 110px) 0 0 auto;
+      font-size: $homepage-redirect-font-size;
       transition: ease-in all .5s;
       @include fade-in('box', 1);
     }
@@ -63,50 +64,52 @@
   }
 }
 
+/* SETTINGS FOR LIGHT MODE */
 .homepageContainer-light {
-  background: $light-background-color;
+  background: $homepage-light-background-color;
 
   .homepageTitle {
-    @include concavedTextLight($font-serif-slab, $logo-font-light-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextLight($homepage-font-family, $homepage-light-font-color);
+    text-shadow: $homepage-light-text-shadow;
   }
 
   .homepageSubtitle, .toPortfolio {
-    @include concavedTextLight($font-serif-slab, $logo-font-light-color);
-    text-shadow: $light-selected-text-shadow;
+    @include concavedTextLight($homepage-font-family, $homepage-light-font-color);
+    text-shadow: $homepage-light-text-shadow;
 
     .highlight, .toPortfolioLink {
       transition: all 0.5s ease-in;
-      color: $logo-font-dark-color;
-      text-shadow: $logo-dark-selected-text-shadow;
+      color: $homepage-dark-font-color;
+      text-shadow: $homepage-dark-text-shadow;
     }
 
     .toPortfolioLink:hover {
-      color: $loading-light-blend-color;
+      color: $homepage-light-blend-color;
     }
   }
 }
 
+/* SETTINGS FOR DARK MODE */
 .homepageContainer-dark {
-  background: $dark-background-color;
+  background: $homepage-dark-background-color;
 
   .homepageTitle {
-    @include concavedTextDark($font-serif-slab, $logo-font-dark-color);
-    text-shadow: $logo-dark-selected-text-shadow;
+    @include concavedTextDark($homepage-font-family, $homepage-dark-font-color);
+    text-shadow: $homepage-dark-text-shadow;
   }
 
   .homepageSubtitle, .toPortfolio {
-    @include concavedTextDark($font-serif-slab, $logo-font-dark-color);
-    text-shadow: $logo-dark-selected-text-shadow;
+    @include concavedTextDark($homepage-font-family, $homepage-dark-font-color);
+    text-shadow: $homepage-dark-text-shadow;
 
     .highlight, .toPortfolioLink {
       transition: all 0.5s ease-in;
-      color: $logo-font-light-color;
-      text-shadow: $light-selected-text-shadow;
+      color: $homepage-light-font-color;
+      text-shadow: $homepage-light-text-shadow;
     }
 
     .toPortfolioLink:hover {
-      color: $button-dark-blend-color;
+      color: $homepage-dark-blend-color;
     }
   }
 }

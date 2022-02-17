@@ -5,11 +5,15 @@ import Carousel from '../../common/Carousel/Carousel';
 
 import styles from './Portfolio.module.scss';
 
-const Portfolio = ({mode, language, contentLang, content, getPortfolio}) => {
+/* PORTFOLIO COMPONENT, PRESENTING INFORMATION ABOUT SOME PROJECTS */
+const Portfolio = ({mode, language, contentLang, content, getPortfolio, enableLoading}) => {
+
+  // If chosen language does not fit loaded language, load new language
   if (language !== contentLang) {
     getPortfolio(language);
   }
 
+  // Setting observers for component elements to perform animation based on component position
   const setObservers = () => {
     const projects = document.querySelectorAll('[class*="projectContainer"]');
 
@@ -37,7 +41,12 @@ const Portfolio = ({mode, language, contentLang, content, getPortfolio}) => {
 
   useEffect(() => {
     setObservers();
+    window.scrollTo(0, 0);
   });
+
+  useEffect(() => {
+    enableLoading();
+  }, []);
 
   if (content) {
     return (

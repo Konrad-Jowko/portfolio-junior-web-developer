@@ -1,12 +1,86 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './About.module.scss';
 
-const About = ({mode, language, contentLang, content, getAbout}) => {
+/* ABOUT COMPONENT, PRESENTING SOME EXPERIENCE AND EDUCATION INFORMATION */
+const About = ({mode, language, contentLang, content, getAbout, enableLoading}) => {
+
+  // If chosen language does not fit loaded language, load new language
   if (language !== contentLang) {
     getAbout(language);
   }
+
+  // Setting observers for component elements to perform animation based on component position
+  const setObservers = () => {
+    if(content) {
+      const abouts = document.querySelectorAll('[class*="about"]');
+      const subsections = document.querySelectorAll('[class*="subsection"]');
+      const keyPoints = document.querySelectorAll('[class*="keyPoint"]');
+      const sections = document.querySelectorAll('[class*="section"]');
+
+      const outlineOptions = {
+        threshold: .25  ,
+        rootMargin: '-50px',
+      };
+
+      const fadeInOptions = {
+        threshold: .7,
+        rootMargin: '-50px',
+      };
+
+      const outlineObserver = new IntersectionObserver(function
+      (entries, outlineObserver) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('showOutline');
+          } else {
+            entry.target.classList.remove('showOutline');
+          }
+        });
+      }, outlineOptions);
+
+      const fadeInObserver = new IntersectionObserver(function
+      (entries, fadeInObserver) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('showWhole');
+          } else {
+            entry.target.classList.remove('showWhole');
+          }
+        });
+      }, fadeInOptions);
+
+      abouts.forEach((section) => {
+        outlineObserver.observe(section);
+        fadeInObserver.observe(section);
+      });
+
+      subsections.forEach((section) => {
+        outlineObserver.observe(section);
+        fadeInObserver.observe(section);
+      });
+
+      keyPoints.forEach((point) => {
+        outlineObserver.observe(point);
+        fadeInObserver.observe(point);
+      });
+
+      sections.forEach((point) => {
+        outlineObserver.observe(point);
+        fadeInObserver.observe(point);
+      });
+
+    }
+  };
+
+  useEffect(() => {
+    setObservers();
+  });
+
+  useEffect(() => {
+    enableLoading();
+  }, []);
 
   if (content) {
     return (
@@ -25,7 +99,6 @@ const About = ({mode, language, contentLang, content, getAbout}) => {
                     <div className={styles.subsectionDate}> {subsection.dates} </div>
                     <div className={styles.subsectionName}> {subsection.name} </div>
                     <div className={styles.subsectionDescripion}> {subsection.description} </div>
-
                     {subsection.experienceKeyPoints ?
                       <div className={styles.keyPointsContainer}>
                         <div className={styles.keyPointsTitle}> {content.experienceSubtitle}</div>
@@ -42,7 +115,6 @@ const About = ({mode, language, contentLang, content, getAbout}) => {
                         ))}
                       </div>
                       : null}
-
                   </div>
                 ))}
               </div>

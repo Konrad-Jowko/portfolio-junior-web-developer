@@ -1,6 +1,6 @@
 const Header = require('../models/header.model');
 
-/* GET ALL ORDERS */
+/* GET HEADER COMPONENT CONTENT IN SELECTED LANGUAGE */
 exports.get = async (req, res) => {
   try{
     const results = await Header.find();

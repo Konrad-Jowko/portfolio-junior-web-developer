@@ -1,18 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Contact.module.scss';
 
-const Contact = ({mode, language, contentLang, content, getContact}) => {
+/* ABOUT COMPONENT, PRESENTING CONTACT INFORMATION */
+const Contact = ({mode, language, contentLang, content, getContact, enableLoading}) => {
+
+  // If chosen language does not fit loaded language, load new language
   if (language !== contentLang) {
     getContact(language);
   }
 
+  // Manage click animation on copyable element
   const manageClick = (event, info) => {
     const target = event.target;
     const span = document.getElementById('copyableInfo');
     const icon = document.querySelector('.icon-mail');
-
 
     navigator.clipboard.writeText(info);
 
@@ -23,21 +26,23 @@ const Contact = ({mode, language, contentLang, content, getContact}) => {
       icon.classList.remove('icon-mail');
       icon.classList.add('icon-ok');
       target.classList.toggle('hide');
-    }, 1000);
+    }, 500);
 
     setTimeout(function () {
       target.classList.toggle('hide');
-    }, 2000);
+    }, 1500);
 
     setTimeout(function () {
       span.textContent = info;
       icon.classList.remove('icon-ok');
       icon.classList.add('icon-mail');
       target.classList.toggle('hide');
-    }, 3000);
-
-
+    }, 2000);
   };
+
+  useEffect(() => {
+    enableLoading();
+  }, []);
 
   if (content) {
     return (

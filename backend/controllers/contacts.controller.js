@@ -1,6 +1,6 @@
 const Contact = require('../models/contact.model');
 
-/* GET ALL ORDERS */
+/* GET CONTACT COMPONENT CONTENT IN SELECTED LANGUAGE */
 exports.get = async (req, res) => {
   try{
     const results = await Contact.find();

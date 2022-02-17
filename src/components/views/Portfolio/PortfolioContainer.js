@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Portfolio from './Portfolio';
-import { getMode, getLanguage } from '../../../redux/globalRedux';
+import { getMode, getLanguage, enableLoading} from '../../../redux/globalRedux';
 import { getContent, getLang, getPortfolio } from '../../../redux/portfolioRedux';
 
 const mapStateToProps = (state) => ({
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  enableLoading: () => dispatch(enableLoading()),
   getPortfolio: (lang) => dispatch(getPortfolio(lang)),
 });
 

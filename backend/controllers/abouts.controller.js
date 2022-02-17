@@ -1,6 +1,6 @@
 const About = require('../models/about.model');
 
-/* GET ALL ORDERS */
+/* GET ABOUT COMPONENT CONTENT IN SELECTED LANGUAGE */
 exports.get = async (req, res) => {
   try{
     const results = await About.find();

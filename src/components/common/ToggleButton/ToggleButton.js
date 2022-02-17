@@ -1,31 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 
 import styles from './ToggleButton.module.scss';
 
-const ToggleButton = ({option1, option2, mode, lang, language, twoColor, setDarkMode, setLightMode, setENG, setPL, enableLoading}) => {
-  let style, query, id1, id2, func1, func2, func3;
+/* DOUBLE BUTTON COMPONENT FOR PICKING MUTUALLY EXCLUSIVE OPTIONS */
+const ToggleButton = ({option1, option2, mode, lang, language, twoColor, setMode, setLang, enableLoading}) => {
+  let style, query, id1, id2, func, func2, choosableOption1, choosableOption2;
 
+  // Options for language toggle
   if (lang) {
     style = 'lang';
     query = language === 'eng';
     id1 = 'lngOption1';
     id2 = 'lngOption2';
-    func1 = setENG;
-    func2 = setPL;
-    func3 = enableLoading;
+    choosableOption1 = 'eng';
+    choosableOption2 = 'pl';
+    func = setLang;
+    func2 = enableLoading;
   }
+
+  // Options for mode toggle
   if (twoColor) {
     style = 'mode';
     query = mode === 'light';
     id1 = 'tcOption1';
     id2 = 'tcOption2';
-    func1 = setLightMode;
-    func2 = setDarkMode;
+    choosableOption1 = 'light';
+    choosableOption2 = 'dark';
+    func = setMode;
   }
 
-  const handleClick = (event, func) => {
+  // Handling clicking on one of the options
+  const handleClick = (event, option) => {
     const pickedElement = event.target;
     let secondElement;
 
@@ -44,18 +50,18 @@ const ToggleButton = ({option1, option2, mode, lang, language, twoColor, setDark
       secondElement.classList.remove(activeClass);
       secondElement.classList.add(notActiveClass);
 
-      if (func3) func3();
-      func();
+      if (func2) func2();
+      func(option);
     }
   };
 
   return (
     <div className={styles.[`container-${mode}`]} >
-      <div className={query ? styles.[`${style}Active`] : styles.[style]} id={id1} onClick= {(event) => handleClick(event, func1)}>
+      <div className={query ? styles.[`${style}Active`] : styles.[style]} id={id1} onClick= {(event) => handleClick(event, choosableOption1)}>
         {option1}
       </div>
 
-      <div className={!query ? styles.[`${style}Active`] : styles.[style]} id={id2} onClick= {(event) => handleClick(event, func2)}>
+      <div className={!query ? styles.[`${style}Active`] : styles.[style]} id={id2} onClick= {(event) => handleClick(event, choosableOption2)}>
         {option2}
       </div>
     </div>
@@ -69,10 +75,8 @@ ToggleButton.propTypes = {
   language: PropTypes.string,
   lang: PropTypes.bool,
   twoColor: PropTypes.bool,
-  setDarkMode: PropTypes.func,
-  setLightMode: PropTypes.func,
-  setENG: PropTypes.func,
-  setPL: PropTypes.func,
+  setMode: PropTypes.func,
+  setLang: PropTypes.func,
   enableLoading: PropTypes.func,
 };
 

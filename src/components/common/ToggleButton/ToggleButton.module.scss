@@ -1,5 +1,6 @@
 @import '../../../styles/global.scss';
 
+/* SETTINGS FOR ALL MODES*/
 [class*="container"] {
   border-radius: .25em;
   display: flex;
@@ -41,6 +42,7 @@
   }
 }
 
+/* SETTINGS FOR LIGHT MODE */
 .container-light {
   border: 3px solid $toggle-light-font-color;
   @include concavedTextLight($toggle-font-family, $toggle-light-font-color);
@@ -55,6 +57,7 @@
   }
 }
 
+/* SETTINGS FOR DARK MODE */
 .container-dark {
   border: 3px solid $toggle-dark-font-color;
   @include concavedTextDark($toggle-font-family, $toggle-dark-font-color);
