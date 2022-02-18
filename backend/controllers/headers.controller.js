@@ -4,6 +4,7 @@ const Header = require('../models/header.model');
 exports.get = async (req, res) => {
   try{
     const results = await Header.find();
+
     const result = results[0].navbarElements[req.params.lang];
 
     if(!result) res.status(404).json({ post: 'Not found' });

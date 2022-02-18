@@ -59,7 +59,8 @@
           flex: 1;
           display: flex;
           flex-flow: column nowrap;
-          min-height: calc(min(280px, 25vh));
+          min-height: calc(min(280px, 20vh));
+          min-width: 250px;
           margin: 30px;
 
           .detailTitle {
