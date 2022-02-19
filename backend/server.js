@@ -9,10 +9,19 @@ const pagesRoutes = require('./routes/pages.routes');
 /* INITIALIZING EXPRESS */
 const app = express();
 
+/*  */
+var forceSsl = function (req, res, next) {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(['https://', req.get('Host'), req.url].join(''));
+  }
+  return next();
+};
+
 /* MIDDLEWARE */
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(forceSsl);
 app.use(express.static(path.join(__dirname, '/public')));
 
 /* API ENDPOINTS */
